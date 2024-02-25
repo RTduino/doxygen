@@ -12,7 +12,7 @@ RTduino boasts two distinct documentation centers, each serving a unique purpose
 
 - **[RTduino Document Center](http://docs.rtduino.com)**: This is the documentation hub for users of all levels, featuring comprehensive guides on setting up the RTduino environment, detailed usage methods, and a wide array of examples. Whether you're new to RTduino or looking to expand your knowledge, the User Documentation Center is your go-to resource for practical information on leveraging RTduino in your projects.
 
-- **[RTduino Source Code Reference Manual](http://doxygen.rtduino.com)**: Targeted at advanced users with a keen interest in the underlying source code of RTduino, this documentation center is powered by Doxygen. It offers an in-depth look at the RTduino framework's structure, core components, and internal APIs. Ideal for those wishing to contribute to the project or understand the mechanics behind RTduino's functionality, the Source Code Documentation Center is an invaluable resource for source code analysis and contribution.
+- **[RTduino Source Code Reference Manual](http://source.rtduino.com)**: Targeted at advanced users with a keen interest in the underlying source code of RTduino, this documentation center is powered by Doxygen. It offers an in-depth look at the RTduino framework's structure, core components, and internal APIs. Ideal for those wishing to contribute to the project or understand the mechanics behind RTduino's functionality, the Source Code Documentation Center is an invaluable resource for source code analysis and contribution.
 
 # RTduino Key Features
 
