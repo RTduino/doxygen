@@ -1,0 +1,3 @@
+[submodule "RTduino"]
+	path = RTduino
+	url = https://github.com/RTduino/RTduino.git
