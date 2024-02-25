@@ -3,7 +3,7 @@ var searchData=
   ['rad_5fto_5fdeg_59',['RAD_TO_DEG',['../group__Maths.html#ga89e47af0449640d4f15191aba5ca24c6',1,'Arduino.h']]],
   ['radians_60',['radians',['../group__Maths.html#ga7571dba2995b9cb57259345fe49d2f97',1,'Arduino.h']]],
   ['randomseed_61',['randomSeed',['../group__Random.html#ga0f20cd490a0ba7f2d37cbb8b04d92e3e',1,'randomSeed(unsigned long seed):&#160;WMath_c.c'],['../group__Random.html#ga0f20cd490a0ba7f2d37cbb8b04d92e3e',1,'randomSeed(unsigned long seed):&#160;WMath_c.c']]],
-  ['readme_62',['README',['../md_RTduino_libraries_buildin_README.html',1,'']]],
+  ['readme_62',['README',['../md_RTduino_core_avr_README.html',1,'(Global Namespace)'],['../md_RTduino_libraries_buildin_README.html',1,'(Global Namespace)']]],
   ['rt_5fpin_63',['rt_pin',['../structpin__map__t.html#a82b2500afecaaac6c4cf8eee8fc19f87',1,'pin_map_t']]],
   ['rtduino_64',['RTduino',['../index.html',1,'']]],
   ['rtduino_2eh_65',['RTduino.h',['../RTduino_8h.html',1,'']]],
