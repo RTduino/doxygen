@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['readme_166',['README',['../md_RTduino_libraries_buildin_README.html',1,'']]],
-  ['rtduino_20doxygen_167',['RTduino Doxygen',['../index.html',1,'']]]
+  ['main_20page_165',['Main Page',['../index.html',1,'']]]
 ];

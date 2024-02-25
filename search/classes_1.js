@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['hardwareserial_97',['HardwareSerial',['../classHardwareSerial.html',1,'']]]
+  ['hardwareserial_96',['HardwareSerial',['../classHardwareSerial.html',1,'']]]
 ];

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>RTduino: RTduino Doxygen</title>
+<title>RTduino: Main Page</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -62,11 +62,21 @@ $(function() {
 
 <div class="PageDoc"><div class="header">
   <div class="headertitle">
-<div class="title">RTduino Doxygen </div>  </div>
+<div class="title">Main Page </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="md_doxygen_mainpage"></a> <a href="https://github.com/RTduino/RTduino">RTduino</a> is the Arduino ecosystem compatibility layer for <a href="https://www.rt-thread.io">RT-Thread RTOS</a>. RTduino is the sub-community of <a href="https://github.com/RT-Thread/rt-thread">RT-Thread community</a> and the downstream project of Arduino. RTduino is an open source project which is compatible with Arduino APIs so that RT-Thread beginners can easily get start to use RT-Thread through Arduino APIs, which significantly reduces the difficulty of learning RT-Thread. Meanwhile, RT-Thread users also can directly run thousands of <a href="https://www.arduino.cc/reference/en/libraries/">Arduino third party libraries</a> on RT-Thread by using RTduino.</p>
+<div class="textblock"><p><a class="anchor" id="md_doxygen_mainpage"></a> Welcome to the Source Code Documentation Center. RTduino is a comprehensive framework designed to make working with microcontrollers easier, more flexible, and more intuitive for developers, especially those familiar with the Arduino ecosystem. This documentation aims to provide you with an overview of the RTduino source code, helping you navigate through its structure and understand its core functionalities.</p>
 <h1><a class="anchor" id="autotoc_md1"></a>
+Overview</h1>
+<p>RTduino represents a bridge between the <a href="https://github.com/RTduino/RTduino">Arduino ecosystem</a> and the <a href="https://www.rt-thread.io">RT-Thread RTOS</a>, functioning as a compatibility layer that integrates the simplicity and ease of use of Arduino with the robust real-time, connectivity, and multi-threading features of RT-Thread. As a sub-community within the <a href="https://github.com/RT-Thread/rt-thread">RT-Thread community</a> and a downstream project of Arduino, RTduino enables users to leverage Arduino APIs within the RT-Thread environment, significantly simplifying the learning curve for RT-Thread beginners. This open-source project ensures that developers can utilize thousands of <a href="https://www.arduino.cc/reference/en/libraries/">Arduino third-party libraries</a> directly on RT-Thread, facilitating the development of real-time applications. By extending the Arduino model to RT-Thread, RTduino opens up a realm of possibilities for projects requiring real-time performance, connectivity, and advanced threading capabilities, all while maintaining the familiar and accessible programming model of Arduino.</p>
+<h1><a class="anchor" id="autotoc_md2"></a>
+Documentation Centers</h1>
+<p>RTduino boasts two distinct documentation centers, each serving a unique purpose to cater to the diverse needs of its user base:</p>
+<ul>
+<li><b>RTduino User Documentation Center (<a href="http://docs.rtduino.com">docs.rtduino.com</a>)</b>: This is the primary documentation hub for users of all levels, featuring comprehensive guides on setting up the RTduino environment, detailed usage methods, and a wide array of examples. Whether you're new to RTduino or looking to expand your knowledge, the User Documentation Center is your go-to resource for practical information on leveraging RTduino in your projects.</li>
+<li><b>RTduino Source Code Documentation Center (<a href="http://doxygen.rtduino.com">doxygen.rtduino.com</a>)</b>: Targeted at advanced users with a keen interest in the underlying source code of RTduino, this documentation center is powered by Doxygen. It offers an in-depth look at the RTduino framework's structure, core components, and internal APIs. Ideal for those wishing to contribute to the project or understand the mechanics behind RTduino's functionality, the Source Code Documentation Center is an invaluable resource for source code analysis and contribution.</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md3"></a>
 RTduino Key Features</h1>
 <p>Explore the distinctive features that make RTduino an essential bridge between the RT-Thread real-time operating system and the Arduino ecosystem.</p>
 <ul>
@@ -74,11 +84,37 @@ RTduino Key Features</h1>
 <li><b>Rich Arduino Ecosystem:</b> Leveraging RTduino enriches the RT-Thread software package ecosystem by incorporating thousands of diverse Arduino libraries and outstanding open-source projects from the Arduino community. This extensive collection includes categorized Arduino libraries and remarkable projects, seamlessly merging into RT-Thread projects.</li>
 <li><b>Simplified Learning Curve:</b> RTduino aims to lower the learning curve for the RT-Thread operating system and RT-Thread-compatible chips. By facilitating the usage of Arduino functions, programming methods, and third-party libraries, RTduino makes it easier for users to transition to and make the most of the RT-Thread environment.</li>
 <li><b>Real-time Capabilities:</b> Benefit from the real-time capabilities of RT-Thread while enjoying the simplicity of Arduino programming. RTduino ensures a harmonious integration of real-time features, offering users the best of both worlds.</li>
-<li><b>Hardware Timer Support:</b> RTduino provides support for hardware timers, enhancing the timing precision and capabilities of your projects. This feature is seamlessly integrated, offering flexibility and advanced timing functionalities.</li>
 <li><b>Setup-Loop Structure:</b> RTduino supports the familiar setup-loop structure, allowing users to organize their code in a way that aligns with Arduino conventions. This structure enhances code readability and maintains compatibility with existing Arduino projects.</li>
 <li><b>Auto-Init Macros and Functions:</b> Enjoy the convenience of auto-init macros and functions provided by RTduino. These features streamline the initialization process, making it easier for users to set up their projects efficiently.</li>
 </ul>
-<p>Elevate your embedded systems development with RTduino's unique features, combining the strengths of the Arduino ecosystem with the real-time capabilities of RT-Thread. </p>
+<h2><a class="anchor" id="autotoc_md4"></a>
+Source Code Structure</h2>
+<p>The RTduino repository is structured as follows, focusing on the core components that make up the RTduino framework:</p>
+<ul>
+<li><b>Core</b>: The backbone of RTduino, implementing the basic framework and Arduino compatibility layer.</li>
+<li><b>Libraries</b>: Reusable components that extend the functionality of RTduino, ranging from sensor interfaces to communication protocols.</li>
+<li><b>Examples</b>: A collection of examples demonstrating how to use RTduino for various applications and highlighting the use of core features and libraries.</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md5"></a>
+Getting Started</h2>
+<p>To get started with RTduino, clone the repository and explore the examples provided. These examples are designed to cover a wide range of applications, showcasing how RTduino can be used in different scenarios. Whether you are interested in simple GPIO control, serial communication, or integrating with various sensors and actuators, you will find relevant examples to help you begin.</p>
+<h2><a class="anchor" id="autotoc_md6"></a>
+RTduino Header Files Explained</h2>
+<h3><a class="anchor" id="autotoc_md7"></a>
+&lt;tt&gt;Arduino.h&lt;/tt&gt;</h3>
+<p>This header file acts as the cornerstone for RTduino applications, encapsulating the essence of the Arduino development environment within the RTduino framework. It defines the fundamental data types, constants, and function prototypes crucial for Arduino compatibility. By including <code><a class="el" href="Arduino_8h.html" title="Arduino Core Header File.">Arduino.h</a></code>, developers ensure their code adheres to the familiar Arduino API. This facilitation allows for a seamless transition of Arduino projects to the RTduino platform and enables the use of a vast array of existing Arduino libraries and sketches with minimal modifications.</p>
+<h3><a class="anchor" id="autotoc_md8"></a>
+&lt;tt&gt;RTduino.h&lt;/tt&gt;</h3>
+<p>While <code><a class="el" href="Arduino_8h.html" title="Arduino Core Header File.">Arduino.h</a></code> focuses on Arduino compatibility, <code><a class="el" href="RTduino_8h.html" title="RTduino Core Header File.">RTduino.h</a></code> serves as the bridge to the advanced features and real-time capabilities provided by the RT-Thread operating system. This header file is key to unlocking the full potential of RTduino, offering access to RT-Thread's functionalities such as multi-threading, synchronization primitives, and real-time scheduling. Including <code><a class="el" href="RTduino_8h.html" title="RTduino Core Header File.">RTduino.h</a></code> in an application allows developers to seamlessly integrate real-time operations within the Arduino programming model, thereby enhancing their projects' capability to handle complex tasks, improve performance, and maintain reliability in real-time environments.</p>
+<h2><a class="anchor" id="autotoc_md9"></a>
+Contributing</h2>
+<p>Contributions to RTduino are highly encouraged and welcomed! Whether it's adding new features, improving existing ones, fixing bugs, or <b>writing and improving documentation</b>, your contributions play a vital role in enhancing RTduino for everyone in the community. Good documentation is as crucial as the code itself, as it ensures that everyone can understand, use, and contribute to RTduino more effectively.</p>
+<p>If you're interested in contributing to the documentation, consider the following:</p><ul>
+<li><b>Improving existing documentation</b>: Clarify existing content, fix typos, or add missing details.</li>
+<li><b>Writing new guides or tutorials</b>: Share your knowledge and experiences by creating new content that helps others learn how to use RTduino effectively.</li>
+<li><b>Code comments and examples</b>: Enhance the understandability of the source code with detailed comments or add new examples to demonstrate the use of RTduino features.</li>
+</ul>
+<p>Please refer to the repository's contribution guidelines for more detailed information on how to contribute effectively. By working together, we can make RTduino an even more powerful and accessible tool for developers worldwide. </p>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 <!-- start footer part -->
