@@ -74,10 +74,10 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ga1ed2ad1a8590a020e15ba2b485428415"><td class="memItemLeft" align="right" valign="top">unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Advanced.html#ga1ed2ad1a8590a020e15ba2b485428415">pulseIn</a> (uint8_t pin, uint8_t state, unsigned long timeout)</td></tr>
-<tr class="memdesc:ga1ed2ad1a8590a020e15ba2b485428415"><td class="mdescLeft">&#160;</td><td class="mdescRight">Measures the duration of a pulse on the specified pin.  <a href="group__Advanced.html#ga1ed2ad1a8590a020e15ba2b485428415">More...</a><br /></td></tr>
+<tr class="memdesc:ga1ed2ad1a8590a020e15ba2b485428415"><td class="mdescLeft">&#160;</td><td class="mdescRight">Measures the duration of a pulse (in us) on the specified pin.  <a href="group__Advanced.html#ga1ed2ad1a8590a020e15ba2b485428415">More...</a><br /></td></tr>
 <tr class="separator:ga1ed2ad1a8590a020e15ba2b485428415"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga5c7c2a8ca6d056f09adb9adb1cd31516"><td class="memItemLeft" align="right" valign="top">unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Advanced.html#ga5c7c2a8ca6d056f09adb9adb1cd31516">pulseInLong</a> (uint8_t pin, uint8_t state, unsigned long timeout)</td></tr>
-<tr class="memdesc:ga5c7c2a8ca6d056f09adb9adb1cd31516"><td class="mdescLeft">&#160;</td><td class="mdescRight">Measures the duration of a pulse on the specified pin.  <a href="group__Advanced.html#ga5c7c2a8ca6d056f09adb9adb1cd31516">More...</a><br /></td></tr>
+<tr class="memdesc:ga5c7c2a8ca6d056f09adb9adb1cd31516"><td class="mdescLeft">&#160;</td><td class="mdescRight">Measures the duration of a pulse (in us) on the specified pin.  <a href="group__Advanced.html#ga5c7c2a8ca6d056f09adb9adb1cd31516">More...</a><br /></td></tr>
 <tr class="separator:ga5c7c2a8ca6d056f09adb9adb1cd31516"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gac44afc7b9d1ec5feb1179b2e3454690a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Advanced.html#gac44afc7b9d1ec5feb1179b2e3454690a">shiftOut</a> (uint8_t dataPin, uint8_t clockPin, uint8_t bitOrder, uint8_t val)</td></tr>
 <tr class="memdesc:gac44afc7b9d1ec5feb1179b2e3454690a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends out a byte of data on the specified data pin using the specified clock and bit order.  <a href="group__Advanced.html#gac44afc7b9d1ec5feb1179b2e3454690a">More...</a><br /></td></tr>
@@ -121,19 +121,9 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Measures the duration of a pulse on the specified pin. </p>
-<p>/ </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">pin</td><td>The number of the pin on which to measure the pulse. </td></tr>
-    <tr><td class="paramname">state</td><td>The type of pulse to measure (e.g., HIGH, LOW, CHANGE, FALLING, RISING). </td></tr>
-    <tr><td class="paramname">timeout</td><td>The maximum duration to wait for the pulse, in microseconds. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The duration of the pulse in microseconds, or 0 if no pulse starts before the timeout. </dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a href="https://www.arduino.cc/reference/en/language/functions/advanced-io/pulsein">https://www.arduino.cc/reference/en/language/functions/advanced-io/pulsein</a></dd></dl>
-<p>Measures the length (in microseconds) of a pulse on the pin. The state parameter specifies the type of pulse to measure (HIGH or LOW). The timeout parameter specifies the maximum time to wait for the pulse to complete. This function works on pulses from 2-3 microseconds to 3 minutes in length. It cannot work in noInterrupt() context.</p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Measures the duration of a pulse (in us) on the specified pin. </p>
+<p>/</p>
+<p>The state parameter specifies the type of pulse to measure (HIGH or LOW). The timeout parameter specifies the maximum time to wait for the pulse to complete. This function works on pulses from 2-3 microseconds to 3 minutes in length. It cannot work in noInterrupt() context. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">pin</td><td>The pin number to measure the pulse on. </td></tr>
     <tr><td class="paramname">state</td><td>The type of pulse to measure (HIGH or LOW). </td></tr>
@@ -141,7 +131,8 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The length of the pulse in microseconds, or 0 if timeout or other errors occur. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The duration of the pulse in microseconds, or 0 if no pulse starts before the timeout. </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a href="https://www.arduino.cc/reference/en/language/functions/advanced-io/pulsein">https://www.arduino.cc/reference/en/language/functions/advanced-io/pulsein</a> </dd></dl>
 
 </div>
 </div>
@@ -177,19 +168,9 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Measures the duration of a pulse on the specified pin. </p>
-<p>/ </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">pin</td><td>The number of the pin on which to measure the pulse. </td></tr>
-    <tr><td class="paramname">state</td><td>The type of pulse to measure (e.g., HIGH, LOW, CHANGE, FALLING, RISING). </td></tr>
-    <tr><td class="paramname">timeout</td><td>The maximum duration to wait for the pulse, in microseconds. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The duration of the pulse in microseconds, or 0 if no pulse starts before the timeout. </dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a href="https://www.arduino.cc/reference/en/language/functions/advanced-io/pulseinlong">https://www.arduino.cc/reference/en/language/functions/advanced-io/pulseinlong</a></dd></dl>
-<p>Measures the length (in microseconds) of a pulse on the pin. The state parameter specifies the type of pulse to measure (HIGH or LOW). The timeout parameter specifies the maximum time to wait for the pulse to complete. This function works on pulses from 2-3 microseconds to 3 minutes in length. It relies on the <a class="el" href="group__Time.html#ga705e7f8e2a34e0e2447e933ebf56b4d4" title="Returns the number of microseconds since the Arduino board began running the current program.">micros()</a> function, so it cannot be used in noInterrupt() context.</p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Measures the duration of a pulse (in us) on the specified pin. </p>
+<p>/</p>
+<p>The state parameter specifies the type of pulse to measure (HIGH or LOW). The timeout parameter specifies the maximum time to wait for the pulse to complete. This function works on pulses from 2-3 microseconds to 3 minutes in length. It relies on the <a class="el" href="group__Time.html#ga705e7f8e2a34e0e2447e933ebf56b4d4" title="Returns the number of microseconds since the Arduino board began running the current program.">micros()</a> function, so it cannot be used in noInterrupt() context. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">pin</td><td>The pin number to measure the pulse on. </td></tr>
     <tr><td class="paramname">state</td><td>The type of pulse to measure (HIGH or LOW). </td></tr>
@@ -197,7 +178,8 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The length of the pulse in microseconds, or 0 if timeout or other errors occur. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The duration of the pulse in microseconds, or 0 if no pulse starts before the timeout. </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a href="https://www.arduino.cc/reference/en/language/functions/advanced-io/pulseinlong">https://www.arduino.cc/reference/en/language/functions/advanced-io/pulseinlong</a> </dd></dl>
 
 </div>
 </div>
