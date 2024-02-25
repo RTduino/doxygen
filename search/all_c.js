@@ -5,7 +5,7 @@ var searchData=
   ['randomseed_61',['randomSeed',['../group__Random.html#ga0f20cd490a0ba7f2d37cbb8b04d92e3e',1,'randomSeed(unsigned long seed):&#160;WMath_c.c'],['../group__Random.html#ga0f20cd490a0ba7f2d37cbb8b04d92e3e',1,'randomSeed(unsigned long seed):&#160;WMath_c.c']]],
   ['readme_62',['README',['../md_RTduino_libraries_buildin_README.html',1,'']]],
   ['rt_5fpin_63',['rt_pin',['../structpin__map__t.html#a82b2500afecaaac6c4cf8eee8fc19f87',1,'pin_map_t']]],
-  ['rtduino_64',['RTduino',['../index.html',1,'']]],
+  ['rtduino_20doxygen_64',['RTduino Doxygen',['../index.html',1,'']]],
   ['rtduino_2eh_65',['RTduino.h',['../RTduino_8h.html',1,'']]],
   ['rtduino_5floader_66',['rtduino_loader',['../structrtduino__loader.html',1,'']]],
   ['rtduino_5floader_5ft_67',['rtduino_loader_t',['../structrtduino__loader__t.html',1,'']]],
