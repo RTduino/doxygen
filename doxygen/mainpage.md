@@ -1,4 +1,4 @@
-# RTduino Source Code Reference Manual
+# Main Page
 
 Welcome to the Source Code Documentation Center. RTduino is a comprehensive framework designed to make working with microcontrollers easier, more flexible, and more intuitive for developers, especially those familiar with the Arduino ecosystem. This documentation aims to provide you with an overview of the RTduino source code, helping you navigate through its structure and understand its core functionalities.
 
