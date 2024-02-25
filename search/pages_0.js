@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['rtduino_20source_20code_20reference_20manual_165',['RTduino Source Code Reference Manual',['../index.html',1,'']]]
+  ['main_20page_165',['Main Page',['../index.html',1,'']]]
 ];
