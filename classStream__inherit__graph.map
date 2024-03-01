@@ -1,8 +1,10 @@
 <map id="Stream" name="Stream">
-<area shape="rect" id="node1" title=" " alt="" coords="156,80,225,107"/>
-<area shape="rect" id="node3" href="$classHardwareSerial.html" title=" " alt="" coords="5,155,128,181"/>
-<area shape="rect" id="node5" href="$classTwoWire.html" title=" " alt="" coords="152,155,229,181"/>
-<area shape="rect" id="node6" href="$classUSBSerial.html" title=" " alt="" coords="254,155,341,181"/>
-<area shape="rect" id="node2" href="$classPrint.html" title=" " alt="" coords="165,5,217,32"/>
-<area shape="rect" id="node4" href="$classConsoleSerial.html" title=" " alt="" coords="11,229,122,256"/>
+<area shape="rect" id="node1" title=" " alt="" coords="241,80,310,107"/>
+<area shape="rect" id="node3" href="$classClient.html" title=" " alt="" coords="5,155,65,181"/>
+<area shape="rect" id="node4" href="$classHardwareSerial.html" title=" " alt="" coords="90,155,213,181"/>
+<area shape="rect" id="node6" href="$classTwoWire.html" title=" " alt="" coords="237,155,314,181"/>
+<area shape="rect" id="node7" href="$classUDP.html" title=" " alt="" coords="338,155,389,181"/>
+<area shape="rect" id="node8" href="$classUSBSerial.html" title=" " alt="" coords="413,155,500,181"/>
+<area shape="rect" id="node2" href="$classPrint.html" title=" " alt="" coords="249,5,301,32"/>
+<area shape="rect" id="node5" href="$classConsoleSerial.html" title=" " alt="" coords="96,229,207,256"/>
 </map>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['usbserial_110',['USBSerial',['../classUSBSerial.html',1,'']]]
+  ['twowire_116',['TwoWire',['../classTwoWire.html',1,'']]]
 ];
