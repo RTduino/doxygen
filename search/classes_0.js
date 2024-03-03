@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['client_97',['Client',['../classClient.html',1,'']]],
-  ['consoleserial_98',['ConsoleSerial',['../classConsoleSerial.html',1,'']]]
+  ['client_113',['Client',['../classClient.html',1,'']]],
+  ['consoleserial_114',['ConsoleSerial',['../classConsoleSerial.html',1,'']]]
 ];

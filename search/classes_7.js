@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['twowire_114',['TwoWire',['../classTwoWire.html',1,'']]]
+  ['twowire_130',['TwoWire',['../classTwoWire.html',1,'']]]
 ];

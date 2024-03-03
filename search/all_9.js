@@ -1,11 +1,7 @@
 var searchData=
 [
-  ['main_20page_42',['Main Page',['../index.html',1,'']]],
-  ['maths_43',['Maths',['../group__Maths.html',1,'']]],
-  ['max_44',['max',['../group__Maths.html#gaffe776513b24d84b39af8ab0930fef7f',1,'Arduino.h']]],
-  ['micros_45',['micros',['../group__Time.html#ga705e7f8e2a34e0e2447e933ebf56b4d4',1,'micros(void):&#160;wiring.c'],['../group__Time.html#ga705e7f8e2a34e0e2447e933ebf56b4d4',1,'micros(void):&#160;wiring.c']]],
-  ['millis_46',['millis',['../group__Time.html#ga1871228c14c912ca1479cf826ddcb07f',1,'millis(void):&#160;wiring.c'],['../group__Time.html#ga1871228c14c912ca1479cf826ddcb07f',1,'millis(void):&#160;wiring.c']]],
-  ['min_47',['min',['../group__Maths.html#gac6afabdc09a49a433ee19d8a9486056d',1,'Arduino.h']]],
-  ['multitarget_48',['MultiTarget',['../structStream_1_1MultiTarget.html',1,'Stream']]],
-  ['multithread_49',['MultiThread',['../group__MultiThread.html',1,'']]]
+  ['loop_49',['loop',['../structrtduino__loader.html#a0eb9b416f525972df6e1e08fa8bfb82d',1,'rtduino_loader::loop()'],['../group__Sketch.html#ga0b33edabd7f1c4e4a0bf32c67269be2f',1,'loop(void):&#160;Arduino.h']]],
+  ['low_50',['LOW',['../group__Interrupts.html#gab811d8c6ff3a505312d3276590444289',1,'Arduino.h']]],
+  ['lowbyte_51',['lowByte',['../group__Bits.html#ga57600234f6e26049357fbecfbdca9537',1,'Arduino.h']]],
+  ['lsbfirst_52',['LSBFIRST',['../group__Bits.html#ga5811613d98580676f67f0dde8125433e',1,'Arduino.h']]]
 ];

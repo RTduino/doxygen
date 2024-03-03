@@ -62,7 +62,8 @@ $(function() {
 
 <div class="header">
   <div class="summary">
-<a href="#define-members">Macros</a>  </div>
+<a href="#define-members">Macros</a> &#124;
+<a href="#typedef-members">Typedefs</a>  </div>
   <div class="headertitle">
 <div class="title">and Bytes</div>  </div>
 </div><!--header-->
@@ -73,6 +74,14 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
+<tr class="memitem:ga5811613d98580676f67f0dde8125433e"><td class="memItemLeft" align="right" valign="top"><a id="ga5811613d98580676f67f0dde8125433e"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Bits.html#ga5811613d98580676f67f0dde8125433e">LSBFIRST</a>&#160;&#160;&#160;0</td></tr>
+<tr class="memdesc:ga5811613d98580676f67f0dde8125433e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Least Significant Bit first. <br /></td></tr>
+<tr class="separator:ga5811613d98580676f67f0dde8125433e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1c7ef42eff02618bde70868af4944d81"><td class="memItemLeft" align="right" valign="top"><a id="ga1c7ef42eff02618bde70868af4944d81"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Bits.html#ga1c7ef42eff02618bde70868af4944d81">MSBFIRST</a>&#160;&#160;&#160;1</td></tr>
+<tr class="memdesc:ga1c7ef42eff02618bde70868af4944d81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Most Significant Bit first. <br /></td></tr>
+<tr class="separator:ga1c7ef42eff02618bde70868af4944d81"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf419eea95c24741f969fbe9eb534404e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Bits.html#gaf419eea95c24741f969fbe9eb534404e">bit</a>(b)&#160;&#160;&#160;(1UL &lt;&lt; (b))</td></tr>
 <tr class="memdesc:gaf419eea95c24741f969fbe9eb534404e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the value of the specified bit (bit 0 is 1, bit 1 is 2, bit 2 is 4, etc.).  <a href="group__Bits.html#gaf419eea95c24741f969fbe9eb534404e">More...</a><br /></td></tr>
 <tr class="separator:gaf419eea95c24741f969fbe9eb534404e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -97,6 +106,21 @@ Macros</h2></td></tr>
 <tr class="memitem:ga32fff07c58e569ce66ad409fe85c73bb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Bits.html#ga32fff07c58e569ce66ad409fe85c73bb">highByte</a>(w)&#160;&#160;&#160;((uint8_t) ((w) &gt;&gt; 8))</td></tr>
 <tr class="memdesc:ga32fff07c58e569ce66ad409fe85c73bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extracts the high-order (leftmost) byte of a word (or the second lowest byte of a larger data type).  <a href="group__Bits.html#ga32fff07c58e569ce66ad409fe85c73bb">More...</a><br /></td></tr>
 <tr class="separator:ga32fff07c58e569ce66ad409fe85c73bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:ga69584ba90b098f23df3702374e594862"><td class="memItemLeft" align="right" valign="top"><a id="ga69584ba90b098f23df3702374e594862"></a>
+typedef unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Bits.html#ga69584ba90b098f23df3702374e594862">word</a></td></tr>
+<tr class="memdesc:ga69584ba90b098f23df3702374e594862"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a 16-bit unsigned integer. <br /></td></tr>
+<tr class="separator:ga69584ba90b098f23df3702374e594862"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7c6368b321bd9acd0149b030bb8275ed"><td class="memItemLeft" align="right" valign="top"><a id="ga7c6368b321bd9acd0149b030bb8275ed"></a>
+typedef bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Bits.html#ga7c6368b321bd9acd0149b030bb8275ed">boolean</a></td></tr>
+<tr class="memdesc:ga7c6368b321bd9acd0149b030bb8275ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a boolean value (true or false). <br /></td></tr>
+<tr class="separator:ga7c6368b321bd9acd0149b030bb8275ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga82b52bf2b45e214a8f2100ebfdf1aee4"><td class="memItemLeft" align="right" valign="top"><a id="ga82b52bf2b45e214a8f2100ebfdf1aee4"></a>
+typedef uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Bits.html#ga82b52bf2b45e214a8f2100ebfdf1aee4">byte</a></td></tr>
+<tr class="memdesc:ga82b52bf2b45e214a8f2100ebfdf1aee4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents an 8-bit unsigned integer. <br /></td></tr>
+<tr class="separator:ga82b52bf2b45e214a8f2100ebfdf1aee4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>Bit and byte data type definitions. </p>
