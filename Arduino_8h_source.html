@@ -285,32 +285,35 @@ $(function() {
 <div class="line"><a name="l00762"></a><span class="lineno">  762</span>&#160;<span class="keywordtype">long</span> random(<span class="keywordtype">long</span> <a class="code" href="group__Maths.html#gac6afabdc09a49a433ee19d8a9486056d">min</a>, <span class="keywordtype">long</span> <a class="code" href="group__Maths.html#gaffe776513b24d84b39af8ab0930fef7f">max</a>);</div>
 <div class="line"><a name="l00763"></a><span class="lineno">  763</span>&#160; </div>
 <div class="line"><a name="l00787"></a><span class="lineno">  787</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00788"></a><span class="lineno">  788</span>&#160;T <a class="code" href="group__Maths.html#gaada2d75bc8a8c6eb845bd940eadfa3fd">map</a>(T x, T in_min, T in_max, T out_min, T out_max);</div>
-<div class="line"><a name="l00789"></a><span class="lineno">  789</span>&#160; </div>
-<div class="line"><a name="l00797"></a><span class="lineno">  797</span>&#160;uint16_t makeWord(uint16_t w);</div>
-<div class="line"><a name="l00798"></a><span class="lineno">  798</span>&#160; </div>
-<div class="line"><a name="l00807"></a><span class="lineno">  807</span>&#160;uint16_t makeWord(<span class="keywordtype">byte</span> h, <span class="keywordtype">byte</span> l);</div>
-<div class="line"><a name="l00808"></a><span class="lineno">  808</span>&#160; </div>
-<div class="line"><a name="l00814"></a><span class="lineno">  814</span>&#160;<span class="preprocessor">#define word(...) makeWord(__VA_ARGS__)</span></div>
-<div class="line"><a name="l00815"></a><span class="lineno">  815</span>&#160; </div>
-<div class="line"><a name="l00825"></a><span class="lineno">  825</span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <a class="code" href="group__Advanced.html#ga1ed2ad1a8590a020e15ba2b485428415">pulseIn</a>(uint8_t pin, uint8_t state, <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> timeout = 1000000L);</div>
-<div class="line"><a name="l00826"></a><span class="lineno">  826</span>&#160; </div>
-<div class="line"><a name="l00836"></a><span class="lineno">  836</span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <a class="code" href="group__Advanced.html#ga5c7c2a8ca6d056f09adb9adb1cd31516">pulseInLong</a>(uint8_t pin, uint8_t state, <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> timeout = 1000000L);</div>
-<div class="line"><a name="l00837"></a><span class="lineno">  837</span>&#160; </div>
-<div class="line"><a name="l00846"></a><span class="lineno">  846</span>&#160;<span class="keywordtype">void</span> tone(uint8_t pin, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> frequency, <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> duration = 0);</div>
-<div class="line"><a name="l00847"></a><span class="lineno">  847</span>&#160; </div>
-<div class="line"><a name="l00854"></a><span class="lineno">  854</span>&#160;<span class="keywordtype">void</span> noTone(uint8_t pin);</div>
-<div class="line"><a name="l00855"></a><span class="lineno">  855</span>&#160; </div>
-<div class="line"><a name="l00856"></a><span class="lineno">  856</span>&#160;<span class="preprocessor">#include &quot;WCharacter.h&quot;</span></div>
-<div class="line"><a name="l00857"></a><span class="lineno">  857</span>&#160;<span class="preprocessor">#include &quot;WString.h&quot;</span></div>
-<div class="line"><a name="l00858"></a><span class="lineno">  858</span>&#160;<span class="preprocessor">#include &quot;HardwareSerial.h&quot;</span></div>
-<div class="line"><a name="l00859"></a><span class="lineno">  859</span>&#160;<span class="preprocessor">#ifdef RTDUINO_USING_USBSERIAL</span></div>
-<div class="line"><a name="l00860"></a><span class="lineno">  860</span>&#160;<span class="preprocessor">#include &quot;USBSerial.h&quot;</span></div>
-<div class="line"><a name="l00861"></a><span class="lineno">  861</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* RTDUINO_USING_USBSERIAL */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00862"></a><span class="lineno">  862</span>&#160; </div>
-<div class="line"><a name="l00863"></a><span class="lineno">  863</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __cplusplus */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00864"></a><span class="lineno">  864</span>&#160; </div>
-<div class="line"><a name="l00865"></a><span class="lineno">  865</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __ARDUINO_CORE_H__ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00788"></a><span class="lineno">  788</span>&#160;T <a class="code" href="group__Maths.html#gaada2d75bc8a8c6eb845bd940eadfa3fd">map</a>(T x, T in_min, T in_max, T out_min, T out_max)</div>
+<div class="line"><a name="l00789"></a><span class="lineno">  789</span>&#160;{</div>
+<div class="line"><a name="l00790"></a><span class="lineno">  790</span>&#160;    <span class="keywordflow">return</span> (T)(((double)(x - in_min) * (double)(out_max - out_min)) / (<span class="keywordtype">double</span>)((in_max - in_min) + out_min));</div>
+<div class="line"><a name="l00791"></a><span class="lineno">  791</span>&#160;}</div>
+<div class="line"><a name="l00792"></a><span class="lineno">  792</span>&#160; </div>
+<div class="line"><a name="l00800"></a><span class="lineno">  800</span>&#160;uint16_t makeWord(uint16_t w);</div>
+<div class="line"><a name="l00801"></a><span class="lineno">  801</span>&#160; </div>
+<div class="line"><a name="l00810"></a><span class="lineno">  810</span>&#160;uint16_t makeWord(<span class="keywordtype">byte</span> h, <span class="keywordtype">byte</span> l);</div>
+<div class="line"><a name="l00811"></a><span class="lineno">  811</span>&#160; </div>
+<div class="line"><a name="l00817"></a><span class="lineno">  817</span>&#160;<span class="preprocessor">#define word(...) makeWord(__VA_ARGS__)</span></div>
+<div class="line"><a name="l00818"></a><span class="lineno">  818</span>&#160; </div>
+<div class="line"><a name="l00828"></a><span class="lineno">  828</span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <a class="code" href="group__Advanced.html#ga1ed2ad1a8590a020e15ba2b485428415">pulseIn</a>(uint8_t pin, uint8_t state, <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> timeout = 1000000L);</div>
+<div class="line"><a name="l00829"></a><span class="lineno">  829</span>&#160; </div>
+<div class="line"><a name="l00839"></a><span class="lineno">  839</span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <a class="code" href="group__Advanced.html#ga5c7c2a8ca6d056f09adb9adb1cd31516">pulseInLong</a>(uint8_t pin, uint8_t state, <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> timeout = 1000000L);</div>
+<div class="line"><a name="l00840"></a><span class="lineno">  840</span>&#160; </div>
+<div class="line"><a name="l00849"></a><span class="lineno">  849</span>&#160;<span class="keywordtype">void</span> tone(uint8_t pin, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> frequency, <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> duration = 0);</div>
+<div class="line"><a name="l00850"></a><span class="lineno">  850</span>&#160; </div>
+<div class="line"><a name="l00857"></a><span class="lineno">  857</span>&#160;<span class="keywordtype">void</span> noTone(uint8_t pin);</div>
+<div class="line"><a name="l00858"></a><span class="lineno">  858</span>&#160; </div>
+<div class="line"><a name="l00859"></a><span class="lineno">  859</span>&#160;<span class="preprocessor">#include &quot;WCharacter.h&quot;</span></div>
+<div class="line"><a name="l00860"></a><span class="lineno">  860</span>&#160;<span class="preprocessor">#include &quot;WString.h&quot;</span></div>
+<div class="line"><a name="l00861"></a><span class="lineno">  861</span>&#160;<span class="preprocessor">#include &quot;HardwareSerial.h&quot;</span></div>
+<div class="line"><a name="l00862"></a><span class="lineno">  862</span>&#160;<span class="preprocessor">#ifdef RTDUINO_USING_USBSERIAL</span></div>
+<div class="line"><a name="l00863"></a><span class="lineno">  863</span>&#160;<span class="preprocessor">#include &quot;USBSerial.h&quot;</span></div>
+<div class="line"><a name="l00864"></a><span class="lineno">  864</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* RTDUINO_USING_USBSERIAL */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00865"></a><span class="lineno">  865</span>&#160; </div>
+<div class="line"><a name="l00866"></a><span class="lineno">  866</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __cplusplus */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00867"></a><span class="lineno">  867</span>&#160; </div>
+<div class="line"><a name="l00868"></a><span class="lineno">  868</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __ARDUINO_CORE_H__ */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="agroup__Advanced_html_ga1ed2ad1a8590a020e15ba2b485428415"><div class="ttname"><a href="group__Advanced.html#ga1ed2ad1a8590a020e15ba2b485428415">pulseIn</a></div><div class="ttdeci">unsigned long pulseIn(uint8_t pin, uint8_t state, unsigned long timeout)</div><div class="ttdoc">Measures the duration of a pulse (in us) on the specified pin.</div><div class="ttdef"><b>Definition:</b> wiring_pulse.c:59</div></div>
 <div class="ttc" id="agroup__Advanced_html_ga1efecc975119046403adc60af645015d"><div class="ttname"><a href="group__Advanced.html#ga1efecc975119046403adc60af645015d">shiftIn</a></div><div class="ttdeci">uint8_t shiftIn(uint8_t dataPin, uint8_t clockPin, uint8_t bitOrder)</div><div class="ttdoc">Shifts in data on a specified data pin using a specified clock pin and bit order.</div><div class="ttdef"><b>Definition:</b> wiring_shift.c:37</div></div>
 <div class="ttc" id="agroup__Advanced_html_ga5c7c2a8ca6d056f09adb9adb1cd31516"><div class="ttname"><a href="group__Advanced.html#ga5c7c2a8ca6d056f09adb9adb1cd31516">pulseInLong</a></div><div class="ttdeci">unsigned long pulseInLong(uint8_t pin, uint8_t state, unsigned long timeout)</div><div class="ttdoc">Measures the duration of a pulse (in us) on the specified pin.</div><div class="ttdef"><b>Definition:</b> wiring_pulse.c:108</div></div>
