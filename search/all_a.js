@@ -1,7 +1,7 @@
 var searchData=
 [
   ['main_20page_53',['Main Page',['../index.html',1,'']]],
-  ['map_54',['map',['../group__Maths.html#ga6387b757fa0223830635218365661945',1,'map(long long x, long long in_min, long long in_max, long long out_min, long long out_max):&#160;WMath_c.c'],['../group__Maths.html#ga6387b757fa0223830635218365661945',1,'map(long long x, long long in_min, long long in_max, long long out_min, long long out_max):&#160;WMath_c.c']]],
+  ['map_54',['map',['../group__Maths.html#gaada2d75bc8a8c6eb845bd940eadfa3fd',1,'map(long x, long in_min, long in_max, long out_min, long out_max):&#160;WMath_c.c'],['../group__Maths.html#gaada2d75bc8a8c6eb845bd940eadfa3fd',1,'map(long x, long in_min, long in_max, long out_min, long out_max):&#160;WMath_c.c']]],
   ['maths_55',['Maths',['../group__Maths.html',1,'']]],
   ['max_56',['max',['../group__Maths.html#gaffe776513b24d84b39af8ab0930fef7f',1,'Arduino.h']]],
   ['micros_57',['micros',['../group__Time.html#ga705e7f8e2a34e0e2447e933ebf56b4d4',1,'micros(void):&#160;wiring.c'],['../group__Time.html#ga705e7f8e2a34e0e2447e933ebf56b4d4',1,'micros(void):&#160;wiring.c']]],
