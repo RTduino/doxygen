@@ -62,7 +62,8 @@ $(function() {
 
 <div class="header">
   <div class="summary">
-<a href="#define-members">Macros</a>  </div>
+<a href="#define-members">Macros</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">Maths</div>  </div>
 </div><!--header-->
@@ -115,6 +116,12 @@ Macros</h2></td></tr>
 <tr class="memitem:gae7616788b30810a219d9cdee95904ba4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Maths.html#gae7616788b30810a219d9cdee95904ba4">sq</a>(x)&#160;&#160;&#160;((x)*(x)) /* x^2 */</td></tr>
 <tr class="memdesc:gae7616788b30810a219d9cdee95904ba4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Squares a number.  <a href="group__Maths.html#gae7616788b30810a219d9cdee95904ba4">More...</a><br /></td></tr>
 <tr class="separator:gae7616788b30810a219d9cdee95904ba4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:ga6387b757fa0223830635218365661945"><td class="memItemLeft" align="right" valign="top">long long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Maths.html#ga6387b757fa0223830635218365661945">map</a> (long long x, long long in_min, long long in_max, long long out_min, long long out_max)</td></tr>
+<tr class="memdesc:ga6387b757fa0223830635218365661945"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maps a value from one range to another.  <a href="group__Maths.html#ga6387b757fa0223830635218365661945">More...</a><br /></td></tr>
+<tr class="separator:ga6387b757fa0223830635218365661945"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>Mathematical definitions and functions. </p>
@@ -318,6 +325,67 @@ Macros</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The squared value. </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="ga6387b757fa0223830635218365661945"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga6387b757fa0223830635218365661945">&#9670;&nbsp;</a></span>map()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">long long map </td>
+          <td>(</td>
+          <td class="paramtype">long long&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">long long&#160;</td>
+          <td class="paramname"><em>in_min</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">long long&#160;</td>
+          <td class="paramname"><em>in_max</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">long long&#160;</td>
+          <td class="paramname"><em>out_min</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">long long&#160;</td>
+          <td class="paramname"><em>out_max</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Maps a value from one range to another. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>The value to map. </td></tr>
+    <tr><td class="paramname">in_min</td><td>The lower bound of the input range. </td></tr>
+    <tr><td class="paramname">in_max</td><td>The upper bound of the input range. </td></tr>
+    <tr><td class="paramname">out_min</td><td>The lower bound of the output range. </td></tr>
+    <tr><td class="paramname">out_max</td><td>The upper bound of the output range. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The mapped value. </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a href="https://www.arduino.cc/reference/en/language/functions/math/map">https://www.arduino.cc/reference/en/language/functions/math/map</a> </dd></dl>
 
 </div>
 </div>
