@@ -97,223 +97,227 @@ $(function() {
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">#include &lt;stdbool.h&gt;</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">#include &lt;posix/stdlib.h&gt;</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">#include &lt;math.h&gt;</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor">#include &quot;avr/io.h&quot;</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor">#include &quot;avr/pgmspace.h&quot;</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor">#include &quot;avr/dtostrf.h&quot;</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">#include &quot;binary.h&quot;</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor">#ifndef RTDUINO_TINY_MODE</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor">#include &quot;pins_arduino.h&quot;</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* RTDUINO_TINY_MODE */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">#include &lt;math.h&gt;</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">#include &quot;binary.h&quot;</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#include &quot;avr/io.h&quot;</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor">#include &quot;avr/stdlib.h&quot;</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor">#include &quot;avr/dtostrf.h&quot;</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor">#include &quot;avr/pgmspace.h&quot;</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="preprocessor">#if RT_VER_NUM &lt; 0x50000</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor">#define rt_align(x)  ALIGN(x)</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor">#define rt_weak      RT_WEAK</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* RT_VER_NUM &lt; 0x50000 */</span><span class="preprocessor"></span></div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor">#if RT_VER_NUM &lt; 0x40101</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor">#error &quot;The minimum version requirement of RT-Thread is 4.1.1&quot;</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* RT_VER_NUM &lt; 0x40101 */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor">#ifndef RTDUINO_TINY_MODE</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor">#include &quot;pins_arduino.h&quot;</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* RTDUINO_TINY_MODE */</span><span class="preprocessor"></span></div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
-<div class="line"><a name="l00134"></a><span class="lineno"><a class="line" href="structpin__map__t.html">  134</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span></div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;{</div>
-<div class="line"><a name="l00136"></a><span class="lineno"><a class="line" href="structpin__map__t.html#a7eb2290f45ff638c0bca0c3584f006c6">  136</a></span>&#160;    uint8_t     <a class="code" href="structpin__map__t.html#a7eb2290f45ff638c0bca0c3584f006c6">arduino_pin</a>;    </div>
-<div class="line"><a name="l00137"></a><span class="lineno"><a class="line" href="structpin__map__t.html#a82b2500afecaaac6c4cf8eee8fc19f87">  137</a></span>&#160;    rt_base_t   <a class="code" href="structpin__map__t.html#a82b2500afecaaac6c4cf8eee8fc19f87">rt_pin</a>;         </div>
-<div class="line"><a name="l00138"></a><span class="lineno"><a class="line" href="structpin__map__t.html#aa4f21c5e0aacaf4d3a96bf284f1e25da">  138</a></span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code" href="structpin__map__t.html#aa4f21c5e0aacaf4d3a96bf284f1e25da">device_name</a>;    </div>
-<div class="line"><a name="l00139"></a><span class="lineno"><a class="line" href="structpin__map__t.html#ae845205410071a42448833bd5a9ca7aa">  139</a></span>&#160;    rt_int8_t   <a class="code" href="structpin__map__t.html#ae845205410071a42448833bd5a9ca7aa">channel</a>;        </div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;} <a class="code" href="structpin__map__t.html">pin_map_t</a>;</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160; </div>
-<div class="line"><a name="l00147"></a><span class="lineno"><a class="line" href="group__Bits.html#ga69584ba90b098f23df3702374e594862">  147</a></span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="group__Bits.html#ga69584ba90b098f23df3702374e594862">word</a>;</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; </div>
-<div class="line"><a name="l00154"></a><span class="lineno"><a class="line" href="group__Bits.html#ga7c6368b321bd9acd0149b030bb8275ed">  154</a></span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">bool</span> <a class="code" href="group__Bits.html#ga7c6368b321bd9acd0149b030bb8275ed">boolean</a>;</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160; </div>
-<div class="line"><a name="l00161"></a><span class="lineno"><a class="line" href="group__Bits.html#ga82b52bf2b45e214a8f2100ebfdf1aee4">  161</a></span>&#160;<span class="keyword">typedef</span> uint8_t <a class="code" href="group__Bits.html#ga82b52bf2b45e214a8f2100ebfdf1aee4">byte</a>;</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160; </div>
-<div class="line"><a name="l00167"></a><span class="lineno"><a class="line" href="group__Interrupts.html#gab811d8c6ff3a505312d3276590444289">  167</a></span>&#160;<span class="preprocessor">#define LOW     0x0</span></div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160; </div>
-<div class="line"><a name="l00173"></a><span class="lineno"><a class="line" href="group__Interrupts.html#ga5bb885982ff66a2e0a0a45a8ee9c35e2">  173</a></span>&#160;<span class="preprocessor">#define HIGH    0x1</span></div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160; </div>
-<div class="line"><a name="l00179"></a><span class="lineno"><a class="line" href="group__Interrupts.html#gaa39fdb6674592214dc56eacc0808eec4">  179</a></span>&#160;<span class="preprocessor">#define CHANGE  0x2</span></div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160; </div>
-<div class="line"><a name="l00185"></a><span class="lineno"><a class="line" href="group__Interrupts.html#gac00eb6fc2047dc399280f31b0c5f4472">  185</a></span>&#160;<span class="preprocessor">#define FALLING 0x3</span></div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160; </div>
-<div class="line"><a name="l00191"></a><span class="lineno"><a class="line" href="group__Interrupts.html#gaeea2b49478f3b13faedba764985c6e96">  191</a></span>&#160;<span class="preprocessor">#define RISING  0x4</span></div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160; </div>
-<div class="line"><a name="l00197"></a><span class="lineno"><a class="line" href="group__Digital.html#ga1bb283bd7893b9855e2f23013891fc82">  197</a></span>&#160;<span class="preprocessor">#define INPUT               0x0</span></div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160; </div>
-<div class="line"><a name="l00203"></a><span class="lineno"><a class="line" href="group__Digital.html#ga61a3c9a18380aafb6e430e79bf596557">  203</a></span>&#160;<span class="preprocessor">#define OUTPUT              0x1</span></div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160; </div>
-<div class="line"><a name="l00209"></a><span class="lineno"><a class="line" href="group__Digital.html#ga6295096662a20dd56186396e535fbe92">  209</a></span>&#160;<span class="preprocessor">#define INPUT_PULLUP        0x2</span></div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160; </div>
-<div class="line"><a name="l00216"></a><span class="lineno"><a class="line" href="group__Digital.html#gac31084f7ffdfd4325b3703718fce74ea">  216</a></span>&#160;<span class="preprocessor">#define INPUT_FLOATING      INPUT</span></div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160; </div>
-<div class="line"><a name="l00223"></a><span class="lineno"><a class="line" href="group__Digital.html#gacc2f64df093104e4b029d86930fa4b8b">  223</a></span>&#160;<span class="preprocessor">#define INPUT_PULLDOWN      0x3</span></div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160; </div>
-<div class="line"><a name="l00230"></a><span class="lineno"><a class="line" href="group__Digital.html#ga5e5c7c0db394df99d22e5a4a6f6a5f0d">  230</a></span>&#160;<span class="preprocessor">#define OUTPUT_OPEN_DRAIN   0x4</span></div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160; </div>
-<div class="line"><a name="l00236"></a><span class="lineno"><a class="line" href="group__Maths.html#ga598a3330b3c21701223ee0ca14316eca">  236</a></span>&#160;<span class="preprocessor">#define PI 3.1415926535897932384626433832795</span></div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160; </div>
-<div class="line"><a name="l00242"></a><span class="lineno"><a class="line" href="group__Maths.html#gae3ec3219e4eee3b0992bfd59c2e2bc42">  242</a></span>&#160;<span class="preprocessor">#define HALF_PI 1.5707963267948966192313216916398</span></div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160; </div>
-<div class="line"><a name="l00248"></a><span class="lineno"><a class="line" href="group__Maths.html#ga3b947f4b635461030ff2d87833e5049e">  248</a></span>&#160;<span class="preprocessor">#define TWO_PI 6.283185307179586476925286766559</span></div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160; </div>
-<div class="line"><a name="l00254"></a><span class="lineno"><a class="line" href="group__Maths.html#ga212460e743fecb084d717bb2180c5a56">  254</a></span>&#160;<span class="preprocessor">#define DEG_TO_RAD 0.017453292519943295769236907684886</span></div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160; </div>
-<div class="line"><a name="l00260"></a><span class="lineno"><a class="line" href="group__Maths.html#ga89e47af0449640d4f15191aba5ca24c6">  260</a></span>&#160;<span class="preprocessor">#define RAD_TO_DEG 57.295779513082320876798154814105</span></div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160; </div>
-<div class="line"><a name="l00266"></a><span class="lineno"><a class="line" href="group__Maths.html#ga7f4ee7567f891560bb62dfbda5f93088">  266</a></span>&#160;<span class="preprocessor">#define EULER 2.718281828459045235360287471352</span></div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160; </div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;<span class="preprocessor">#define SERIAL  0x0</span></div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;<span class="preprocessor">#define DISPLAY 0x1</span></div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160; </div>
-<div class="line"><a name="l00275"></a><span class="lineno"><a class="line" href="group__Bits.html#ga5811613d98580676f67f0dde8125433e">  275</a></span>&#160;<span class="preprocessor">#define LSBFIRST 0</span></div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160; </div>
-<div class="line"><a name="l00281"></a><span class="lineno"><a class="line" href="group__Bits.html#ga1c7ef42eff02618bde70868af4944d81">  281</a></span>&#160;<span class="preprocessor">#define MSBFIRST 1</span></div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160; </div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;<span class="comment">/* math operations */</span></div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;<span class="comment">/* adb() in stdlib.h and round() in math.h */</span></div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;<span class="comment">/* min/max potential macro substitution problem */</span></div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;<span class="preprocessor">#undef min</span></div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;<span class="preprocessor">#undef max</span></div>
-<div class="line"><a name="l00295"></a><span class="lineno"><a class="line" href="group__Maths.html#gac6afabdc09a49a433ee19d8a9486056d">  295</a></span>&#160;<span class="preprocessor">#define min(a, b) ((a)&lt;(b)?(a):(b))</span></div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160; </div>
-<div class="line"><a name="l00304"></a><span class="lineno"><a class="line" href="group__Maths.html#gaffe776513b24d84b39af8ab0930fef7f">  304</a></span>&#160;<span class="preprocessor">#define max(a, b) ((a)&gt;(b)?(a):(b))</span></div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160; </div>
-<div class="line"><a name="l00314"></a><span class="lineno"><a class="line" href="group__Maths.html#ga7df4a1319e5665c9040aa1838eef987c">  314</a></span>&#160;<span class="preprocessor">#define constrain(amt, low, high) ((amt)&lt;(low)?(low):((amt)&gt;(high)?(high):(amt)))</span></div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160; </div>
-<div class="line"><a name="l00322"></a><span class="lineno"><a class="line" href="group__Maths.html#ga7571dba2995b9cb57259345fe49d2f97">  322</a></span>&#160;<span class="preprocessor">#define radians(deg) ((deg)*DEG_TO_RAD)</span></div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160; </div>
-<div class="line"><a name="l00330"></a><span class="lineno"><a class="line" href="group__Maths.html#gafe93c2c14da376a1621194c15c1de496">  330</a></span>&#160;<span class="preprocessor">#define degrees(rad) ((rad)*RAD_TO_DEG)</span></div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160; </div>
-<div class="line"><a name="l00338"></a><span class="lineno"><a class="line" href="group__Maths.html#gae7616788b30810a219d9cdee95904ba4">  338</a></span>&#160;<span class="preprocessor">#define sq(x) ((x)*(x)) </span><span class="comment">/* x^2 */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160; </div>
-<div class="line"><a name="l00344"></a><span class="lineno"><a class="line" href="Arduino_8h.html#a46388d9db8422abfea56ae2323f7a77c">  344</a></span>&#160;<span class="preprocessor">#define _NOP() do { __asm__ volatile (&quot;nop&quot;</span>); } while (0)</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160; </div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;<span class="preprocessor">#ifdef F_CPU</span></div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;<span class="preprocessor">#define clockCyclesPerMicrosecond()  (F_CPU / 1000000L)</span></div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160; </div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;<span class="preprocessor">#define clockCyclesToMicroseconds(a) ((a) / clockCyclesPerMicrosecond())</span></div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160; </div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;<span class="preprocessor">#define microsecondsToClockCycles(a) ((a) * clockCyclesPerMicrosecond())</span></div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;<span class="preprocessor">#elif !defined(RTDUINO_TINY_MODE)</span></div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;<span class="preprocessor">#warning &quot;Please define F_CPU in pins_arduino.h&quot;</span></div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* F_CPU */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160; </div>
-<div class="line"><a name="l00380"></a><span class="lineno"><a class="line" href="group__Bits.html#gaf419eea95c24741f969fbe9eb534404e">  380</a></span>&#160;<span class="preprocessor">#define bit(b) (1UL &lt;&lt; (b))</span></div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160; </div>
-<div class="line"><a name="l00392"></a><span class="lineno"><a class="line" href="group__Bits.html#gaff20d8c0a05ad3043afa2e4ad9ebe768">  392</a></span>&#160;<span class="preprocessor">#define bitRead(value, bit) (((value) &gt;&gt; (bit)) &amp; 0x01)</span></div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160; </div>
-<div class="line"><a name="l00404"></a><span class="lineno"><a class="line" href="group__Bits.html#ga6a8195c0e930f86c6af03ba6af8b41dd">  404</a></span>&#160;<span class="preprocessor">#define bitSet(value, bit) ((value) |= (1UL &lt;&lt; (bit)))</span></div>
-<div class="line"><a name="l00413"></a><span class="lineno"><a class="line" href="group__Bits.html#gabbe843c0521806a4ab2e7cffe44769e2">  413</a></span>&#160;<span class="preprocessor">#define bitClear(value, bit) ((value) &amp;= ~(1UL &lt;&lt; (bit)))</span></div>
-<div class="line"><a name="l00422"></a><span class="lineno"><a class="line" href="group__Bits.html#ga8e2767cc4700e825fa3d276a39f1d0a7">  422</a></span>&#160;<span class="preprocessor">#define bitToggle(value, bit) ((value) ^= (1UL &lt;&lt; (bit)))</span></div>
-<div class="line"><a name="l00432"></a><span class="lineno"><a class="line" href="group__Bits.html#ga42c17f59f3f9a3112d01246760067a8e">  432</a></span>&#160;<span class="preprocessor">#define bitWrite(value, bit, bitvalue) ((bitvalue) ? bitSet(value, bit) : bitClear(value, bit))</span></div>
-<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160; </div>
-<div class="line"><a name="l00441"></a><span class="lineno"><a class="line" href="group__Bits.html#ga57600234f6e26049357fbecfbdca9537">  441</a></span>&#160;<span class="preprocessor">#define lowByte(w) ((uint8_t) ((w) &amp; 0xff))</span></div>
-<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160; </div>
-<div class="line"><a name="l00450"></a><span class="lineno"><a class="line" href="group__Bits.html#ga32fff07c58e569ce66ad409fe85c73bb">  450</a></span>&#160;<span class="preprocessor">#define highByte(w) ((uint8_t) ((w) &gt;&gt; 8))</span></div>
-<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160; </div>
-<div class="line"><a name="l00462"></a><span class="lineno"><a class="line" href="group__Digital.html#gabf453c1659ee9fafa5af689523ac71e7">  462</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__Digital.html#gabf453c1659ee9fafa5af689523ac71e7">pinMode</a>(uint8_t pin, uint8_t mode);</div>
-<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160; </div>
-<div class="line"><a name="l00471"></a><span class="lineno"><a class="line" href="group__Digital.html#ga73b9b61feeaf7d790d107f2954a7fd93">  471</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__Digital.html#ga73b9b61feeaf7d790d107f2954a7fd93">digitalWrite</a>(uint8_t pin, uint8_t val);</div>
-<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160; </div>
-<div class="line"><a name="l00480"></a><span class="lineno"><a class="line" href="group__Digital.html#gab3e9bc73864eb6276f87aa94078224b6">  480</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="group__Digital.html#gab3e9bc73864eb6276f87aa94078224b6">digitalRead</a>(uint8_t pin);</div>
-<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160; </div>
-<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;<span class="keywordtype">int</span> <a class="code" href="group__Analog.html#ga2eda513a6bb35bf13675a24711d4e864">analogRead</a>(uint8_t pin);</div>
-<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160; </div>
-<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__Analog.html#ga62a628c40d93ea1823a1cdb8cae9e7be">analogWrite</a>(uint8_t pin, <span class="keywordtype">int</span> val);</div>
-<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160; </div>
-<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__Analog.html#ga529863849f86a63b517cd96cbcd47705">analogReference</a>(uint8_t mode);</div>
-<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160; </div>
-<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__Analog.html#ga0898de532d6f7e0c1a870068b6827a4d">analogReadResolution</a>(uint8_t bits);</div>
-<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160; </div>
-<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__Analog.html#ga20dc001acdcca063c7e09bd90a30c027">analogWriteResolution</a>(uint8_t bits);</div>
-<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160; </div>
-<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__Analog.html#ga219444e36258b8978770f4552619238f">analogWriteFrequency</a>(uint32_t frequency);</div>
-<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160; </div>
-<div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__Time.html#ga7cb51f5c2b5cad3766f19eb69c92793b">yield</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160; </div>
-<div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__Time.html#ga6bc5f943544a887f8b23cadfb26a5e30">delay</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> ms);</div>
-<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160; </div>
-<div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__Time.html#ga62e0a53bc261f9de8700cc5a92307e85">delayMicroseconds</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> us);</div>
-<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160; </div>
-<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <a class="code" href="group__Time.html#ga1871228c14c912ca1479cf826ddcb07f">millis</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160; </div>
-<div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <a class="code" href="group__Time.html#ga705e7f8e2a34e0e2447e933ebf56b4d4">micros</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160; </div>
-<div class="line"><a name="l00603"></a><span class="lineno">  603</span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <a class="code" href="group__Advanced.html#ga1ed2ad1a8590a020e15ba2b485428415">pulseIn</a>(uint8_t pin, uint8_t state, <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> timeout);</div>
-<div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160; </div>
-<div class="line"><a name="l00619"></a><span class="lineno">  619</span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <a class="code" href="group__Advanced.html#ga5c7c2a8ca6d056f09adb9adb1cd31516">pulseInLong</a>(uint8_t pin, uint8_t state, <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> timeout);</div>
-<div class="line"><a name="l00620"></a><span class="lineno">  620</span>&#160; </div>
-<div class="line"><a name="l00630"></a><span class="lineno">  630</span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__Advanced.html#gac44afc7b9d1ec5feb1179b2e3454690a">shiftOut</a>(uint8_t dataPin, uint8_t clockPin, uint8_t bitOrder, uint8_t val);</div>
-<div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160; </div>
-<div class="line"><a name="l00641"></a><span class="lineno">  641</span>&#160;uint8_t <a class="code" href="group__Advanced.html#ga1efecc975119046403adc60af645015d">shiftIn</a>(uint8_t dataPin, uint8_t clockPin, uint8_t bitOrder);</div>
-<div class="line"><a name="l00642"></a><span class="lineno">  642</span>&#160; </div>
-<div class="line"><a name="l00648"></a><span class="lineno">  648</span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__Interrupts.html#ga9541d9956b87e2a65ca0ffcec225c49a">interrupts</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00649"></a><span class="lineno">  649</span>&#160; </div>
-<div class="line"><a name="l00655"></a><span class="lineno">  655</span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__Interrupts.html#gab19ac43e913d173920a5a8697aab72b0">noInterrupts</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00656"></a><span class="lineno">  656</span>&#160; </div>
-<div class="line"><a name="l00664"></a><span class="lineno"><a class="line" href="group__Interrupts.html#gad6dfcb56dbcf79a409aec9a1512e2840">  664</a></span>&#160;uint8_t <a class="code" href="group__Interrupts.html#gad6dfcb56dbcf79a409aec9a1512e2840">digitalPinToInterrupt</a>(uint8_t pin);</div>
-<div class="line"><a name="l00665"></a><span class="lineno">  665</span>&#160; </div>
-<div class="line"><a name="l00674"></a><span class="lineno"><a class="line" href="group__Interrupts.html#gad0d73becebba7c663f8e9ed73efee544">  674</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__Interrupts.html#gad0d73becebba7c663f8e9ed73efee544">attachInterrupt</a>(uint8_t interruptNum, <span class="keywordtype">void</span> (*userFunc)(<span class="keywordtype">void</span>), <span class="keywordtype">int</span> mode);</div>
-<div class="line"><a name="l00675"></a><span class="lineno">  675</span>&#160; </div>
-<div class="line"><a name="l00682"></a><span class="lineno"><a class="line" href="group__Interrupts.html#gaa47ad728b5e830ac48f4085affea7d1c">  682</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__Interrupts.html#gaa47ad728b5e830ac48f4085affea7d1c">detachInterrupt</a>(uint8_t interruptNum);</div>
-<div class="line"><a name="l00683"></a><span class="lineno">  683</span>&#160; </div>
-<div class="line"><a name="l00690"></a><span class="lineno">  690</span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__Random.html#ga0f20cd490a0ba7f2d37cbb8b04d92e3e">randomSeed</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> seed);</div>
-<div class="line"><a name="l00691"></a><span class="lineno">  691</span>&#160; </div>
-<div class="line"><a name="l00703"></a><span class="lineno">  703</span>&#160;<span class="keywordtype">long</span> <a class="code" href="group__Maths.html#gaada2d75bc8a8c6eb845bd940eadfa3fd">map</a>(<span class="keywordtype">long</span> x, <span class="keywordtype">long</span> in_min, <span class="keywordtype">long</span> in_max, <span class="keywordtype">long</span> out_min, <span class="keywordtype">long</span> out_max);</div>
-<div class="line"><a name="l00704"></a><span class="lineno">  704</span>&#160; </div>
-<div class="line"><a name="l00711"></a><span class="lineno"><a class="line" href="group__System.html#ga7dfd9b79bc5a37d7df40207afbc5431f">  711</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__System.html#ga7dfd9b79bc5a37d7df40207afbc5431f">setup</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00712"></a><span class="lineno">  712</span>&#160; </div>
-<div class="line"><a name="l00719"></a><span class="lineno"><a class="line" href="group__System.html#ga0b33edabd7f1c4e4a0bf32c67269be2f">  719</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__System.html#ga0b33edabd7f1c4e4a0bf32c67269be2f">loop</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00720"></a><span class="lineno">  720</span>&#160; </div>
-<div class="line"><a name="l00727"></a><span class="lineno">  727</span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__System.html#ga2c97027bd05bc09accd09dcd4ada2642">initVariant</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00728"></a><span class="lineno">  728</span>&#160; </div>
-<div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;<span class="preprocessor">#ifdef RTDUINO_USING_SPI</span></div>
-<div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160;<span class="keywordtype">void</span> switchToSPI(<span class="keyword">const</span> <span class="keywordtype">char</span> *bus_name);</div>
-<div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* RTDUINO_USING_SPI */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160; </div>
-<div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;} <span class="comment">/* extern &quot;C&quot; { */</span></div>
-<div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="preprocessor">#if RT_VER_NUM &lt; 0x40101</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="preprocessor">#error &quot;The minimum version requirement of RT-Thread is 4.1.1&quot;</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* RT_VER_NUM &lt; 0x40101 */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00138"></a><span class="lineno"><a class="line" href="structpin__map__t.html">  138</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span></div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;{</div>
+<div class="line"><a name="l00140"></a><span class="lineno"><a class="line" href="structpin__map__t.html#a7eb2290f45ff638c0bca0c3584f006c6">  140</a></span>&#160;    uint8_t     <a class="code" href="structpin__map__t.html#a7eb2290f45ff638c0bca0c3584f006c6">arduino_pin</a>;    </div>
+<div class="line"><a name="l00141"></a><span class="lineno"><a class="line" href="structpin__map__t.html#a82b2500afecaaac6c4cf8eee8fc19f87">  141</a></span>&#160;    rt_base_t   <a class="code" href="structpin__map__t.html#a82b2500afecaaac6c4cf8eee8fc19f87">rt_pin</a>;         </div>
+<div class="line"><a name="l00142"></a><span class="lineno"><a class="line" href="structpin__map__t.html#aa4f21c5e0aacaf4d3a96bf284f1e25da">  142</a></span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code" href="structpin__map__t.html#aa4f21c5e0aacaf4d3a96bf284f1e25da">device_name</a>;    </div>
+<div class="line"><a name="l00143"></a><span class="lineno"><a class="line" href="structpin__map__t.html#ae845205410071a42448833bd5a9ca7aa">  143</a></span>&#160;    rt_int8_t   <a class="code" href="structpin__map__t.html#ae845205410071a42448833bd5a9ca7aa">channel</a>;        </div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;} <a class="code" href="structpin__map__t.html">pin_map_t</a>;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160; </div>
+<div class="line"><a name="l00151"></a><span class="lineno"><a class="line" href="group__Bits.html#ga69584ba90b098f23df3702374e594862">  151</a></span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="group__Bits.html#ga69584ba90b098f23df3702374e594862">word</a>;</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160; </div>
+<div class="line"><a name="l00158"></a><span class="lineno"><a class="line" href="group__Bits.html#ga7c6368b321bd9acd0149b030bb8275ed">  158</a></span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">bool</span> <a class="code" href="group__Bits.html#ga7c6368b321bd9acd0149b030bb8275ed">boolean</a>;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; </div>
+<div class="line"><a name="l00165"></a><span class="lineno"><a class="line" href="group__Bits.html#ga82b52bf2b45e214a8f2100ebfdf1aee4">  165</a></span>&#160;<span class="keyword">typedef</span> uint8_t <a class="code" href="group__Bits.html#ga82b52bf2b45e214a8f2100ebfdf1aee4">byte</a>;</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160; </div>
+<div class="line"><a name="l00171"></a><span class="lineno"><a class="line" href="group__Interrupts.html#gab811d8c6ff3a505312d3276590444289">  171</a></span>&#160;<span class="preprocessor">#define LOW     0x0</span></div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160; </div>
+<div class="line"><a name="l00177"></a><span class="lineno"><a class="line" href="group__Interrupts.html#ga5bb885982ff66a2e0a0a45a8ee9c35e2">  177</a></span>&#160;<span class="preprocessor">#define HIGH    0x1</span></div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160; </div>
+<div class="line"><a name="l00183"></a><span class="lineno"><a class="line" href="group__Interrupts.html#gaa39fdb6674592214dc56eacc0808eec4">  183</a></span>&#160;<span class="preprocessor">#define CHANGE  0x2</span></div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160; </div>
+<div class="line"><a name="l00189"></a><span class="lineno"><a class="line" href="group__Interrupts.html#gac00eb6fc2047dc399280f31b0c5f4472">  189</a></span>&#160;<span class="preprocessor">#define FALLING 0x3</span></div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160; </div>
+<div class="line"><a name="l00195"></a><span class="lineno"><a class="line" href="group__Interrupts.html#gaeea2b49478f3b13faedba764985c6e96">  195</a></span>&#160;<span class="preprocessor">#define RISING  0x4</span></div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160; </div>
+<div class="line"><a name="l00201"></a><span class="lineno"><a class="line" href="group__Digital.html#ga1bb283bd7893b9855e2f23013891fc82">  201</a></span>&#160;<span class="preprocessor">#define INPUT               0x0</span></div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160; </div>
+<div class="line"><a name="l00207"></a><span class="lineno"><a class="line" href="group__Digital.html#ga61a3c9a18380aafb6e430e79bf596557">  207</a></span>&#160;<span class="preprocessor">#define OUTPUT              0x1</span></div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160; </div>
+<div class="line"><a name="l00213"></a><span class="lineno"><a class="line" href="group__Digital.html#ga6295096662a20dd56186396e535fbe92">  213</a></span>&#160;<span class="preprocessor">#define INPUT_PULLUP        0x2</span></div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160; </div>
+<div class="line"><a name="l00220"></a><span class="lineno"><a class="line" href="group__Digital.html#gac31084f7ffdfd4325b3703718fce74ea">  220</a></span>&#160;<span class="preprocessor">#define INPUT_FLOATING      INPUT</span></div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160; </div>
+<div class="line"><a name="l00227"></a><span class="lineno"><a class="line" href="group__Digital.html#gacc2f64df093104e4b029d86930fa4b8b">  227</a></span>&#160;<span class="preprocessor">#define INPUT_PULLDOWN      0x3</span></div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160; </div>
+<div class="line"><a name="l00234"></a><span class="lineno"><a class="line" href="group__Digital.html#ga5e5c7c0db394df99d22e5a4a6f6a5f0d">  234</a></span>&#160;<span class="preprocessor">#define OUTPUT_OPEN_DRAIN   0x4</span></div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160; </div>
+<div class="line"><a name="l00240"></a><span class="lineno"><a class="line" href="group__Maths.html#ga598a3330b3c21701223ee0ca14316eca">  240</a></span>&#160;<span class="preprocessor">#define PI 3.1415926535897932384626433832795</span></div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160; </div>
+<div class="line"><a name="l00246"></a><span class="lineno"><a class="line" href="group__Maths.html#gae3ec3219e4eee3b0992bfd59c2e2bc42">  246</a></span>&#160;<span class="preprocessor">#define HALF_PI 1.5707963267948966192313216916398</span></div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160; </div>
+<div class="line"><a name="l00252"></a><span class="lineno"><a class="line" href="group__Maths.html#ga3b947f4b635461030ff2d87833e5049e">  252</a></span>&#160;<span class="preprocessor">#define TWO_PI 6.283185307179586476925286766559</span></div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160; </div>
+<div class="line"><a name="l00258"></a><span class="lineno"><a class="line" href="group__Maths.html#ga212460e743fecb084d717bb2180c5a56">  258</a></span>&#160;<span class="preprocessor">#define DEG_TO_RAD 0.017453292519943295769236907684886</span></div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160; </div>
+<div class="line"><a name="l00264"></a><span class="lineno"><a class="line" href="group__Maths.html#ga89e47af0449640d4f15191aba5ca24c6">  264</a></span>&#160;<span class="preprocessor">#define RAD_TO_DEG 57.295779513082320876798154814105</span></div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160; </div>
+<div class="line"><a name="l00270"></a><span class="lineno"><a class="line" href="group__Maths.html#ga7f4ee7567f891560bb62dfbda5f93088">  270</a></span>&#160;<span class="preprocessor">#define EULER 2.718281828459045235360287471352</span></div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160; </div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;<span class="preprocessor">#define SERIAL  0x0</span></div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;<span class="preprocessor">#define DISPLAY 0x1</span></div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160; </div>
+<div class="line"><a name="l00279"></a><span class="lineno"><a class="line" href="group__Bits.html#ga5811613d98580676f67f0dde8125433e">  279</a></span>&#160;<span class="preprocessor">#define LSBFIRST 0</span></div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160; </div>
+<div class="line"><a name="l00285"></a><span class="lineno"><a class="line" href="group__Bits.html#ga1c7ef42eff02618bde70868af4944d81">  285</a></span>&#160;<span class="preprocessor">#define MSBFIRST 1</span></div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160; </div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;<span class="comment">/* math operations */</span></div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;<span class="comment">/* adb() in stdlib.h and round() in math.h */</span></div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;<span class="comment">/* min/max potential macro substitution problem */</span></div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;<span class="preprocessor">#undef min</span></div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;<span class="preprocessor">#undef max</span></div>
+<div class="line"><a name="l00299"></a><span class="lineno"><a class="line" href="group__Maths.html#gac6afabdc09a49a433ee19d8a9486056d">  299</a></span>&#160;<span class="preprocessor">#define min(a, b) ((a)&lt;(b)?(a):(b))</span></div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160; </div>
+<div class="line"><a name="l00308"></a><span class="lineno"><a class="line" href="group__Maths.html#gaffe776513b24d84b39af8ab0930fef7f">  308</a></span>&#160;<span class="preprocessor">#define max(a, b) ((a)&gt;(b)?(a):(b))</span></div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160; </div>
+<div class="line"><a name="l00318"></a><span class="lineno"><a class="line" href="group__Maths.html#ga7df4a1319e5665c9040aa1838eef987c">  318</a></span>&#160;<span class="preprocessor">#define constrain(amt, low, high) ((amt)&lt;(low)?(low):((amt)&gt;(high)?(high):(amt)))</span></div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160; </div>
+<div class="line"><a name="l00326"></a><span class="lineno"><a class="line" href="group__Maths.html#ga7571dba2995b9cb57259345fe49d2f97">  326</a></span>&#160;<span class="preprocessor">#define radians(deg) ((deg)*DEG_TO_RAD)</span></div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160; </div>
+<div class="line"><a name="l00334"></a><span class="lineno"><a class="line" href="group__Maths.html#gafe93c2c14da376a1621194c15c1de496">  334</a></span>&#160;<span class="preprocessor">#define degrees(rad) ((rad)*RAD_TO_DEG)</span></div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160; </div>
+<div class="line"><a name="l00342"></a><span class="lineno"><a class="line" href="group__Maths.html#gae7616788b30810a219d9cdee95904ba4">  342</a></span>&#160;<span class="preprocessor">#define sq(x) ((x)*(x)) </span><span class="comment">/* x^2 */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160; </div>
+<div class="line"><a name="l00348"></a><span class="lineno"><a class="line" href="Arduino_8h.html#a46388d9db8422abfea56ae2323f7a77c">  348</a></span>&#160;<span class="preprocessor">#define _NOP() do { __asm__ volatile (&quot;nop&quot;</span>); } while (0)</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160; </div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;<span class="preprocessor">#ifdef F_CPU</span></div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;<span class="preprocessor">#define clockCyclesPerMicrosecond()  (F_CPU / 1000000L)</span></div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160; </div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;<span class="preprocessor">#define clockCyclesToMicroseconds(a) ((a) / clockCyclesPerMicrosecond())</span></div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160; </div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;<span class="preprocessor">#define microsecondsToClockCycles(a) ((a) * clockCyclesPerMicrosecond())</span></div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;<span class="preprocessor">#elif !defined(RTDUINO_TINY_MODE)</span></div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;<span class="preprocessor">#warning &quot;Please define F_CPU in pins_arduino.h&quot;</span></div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* F_CPU */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160; </div>
+<div class="line"><a name="l00384"></a><span class="lineno"><a class="line" href="group__Bits.html#gaf419eea95c24741f969fbe9eb534404e">  384</a></span>&#160;<span class="preprocessor">#define bit(b) (1UL &lt;&lt; (b))</span></div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160; </div>
+<div class="line"><a name="l00396"></a><span class="lineno"><a class="line" href="group__Bits.html#gaff20d8c0a05ad3043afa2e4ad9ebe768">  396</a></span>&#160;<span class="preprocessor">#define bitRead(value, bit) (((value) &gt;&gt; (bit)) &amp; 0x01)</span></div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160; </div>
+<div class="line"><a name="l00408"></a><span class="lineno"><a class="line" href="group__Bits.html#ga6a8195c0e930f86c6af03ba6af8b41dd">  408</a></span>&#160;<span class="preprocessor">#define bitSet(value, bit) ((value) |= (1UL &lt;&lt; (bit)))</span></div>
+<div class="line"><a name="l00417"></a><span class="lineno"><a class="line" href="group__Bits.html#gabbe843c0521806a4ab2e7cffe44769e2">  417</a></span>&#160;<span class="preprocessor">#define bitClear(value, bit) ((value) &amp;= ~(1UL &lt;&lt; (bit)))</span></div>
+<div class="line"><a name="l00426"></a><span class="lineno"><a class="line" href="group__Bits.html#ga8e2767cc4700e825fa3d276a39f1d0a7">  426</a></span>&#160;<span class="preprocessor">#define bitToggle(value, bit) ((value) ^= (1UL &lt;&lt; (bit)))</span></div>
+<div class="line"><a name="l00436"></a><span class="lineno"><a class="line" href="group__Bits.html#ga42c17f59f3f9a3112d01246760067a8e">  436</a></span>&#160;<span class="preprocessor">#define bitWrite(value, bit, bitvalue) ((bitvalue) ? bitSet(value, bit) : bitClear(value, bit))</span></div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160; </div>
+<div class="line"><a name="l00445"></a><span class="lineno"><a class="line" href="group__Bits.html#ga57600234f6e26049357fbecfbdca9537">  445</a></span>&#160;<span class="preprocessor">#define lowByte(w) ((uint8_t) ((w) &amp; 0xff))</span></div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160; </div>
+<div class="line"><a name="l00454"></a><span class="lineno"><a class="line" href="group__Bits.html#ga32fff07c58e569ce66ad409fe85c73bb">  454</a></span>&#160;<span class="preprocessor">#define highByte(w) ((uint8_t) ((w) &gt;&gt; 8))</span></div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160; </div>
+<div class="line"><a name="l00466"></a><span class="lineno"><a class="line" href="group__Digital.html#gabf453c1659ee9fafa5af689523ac71e7">  466</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__Digital.html#gabf453c1659ee9fafa5af689523ac71e7">pinMode</a>(uint8_t pin, uint8_t mode);</div>
+<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160; </div>
+<div class="line"><a name="l00475"></a><span class="lineno"><a class="line" href="group__Digital.html#ga73b9b61feeaf7d790d107f2954a7fd93">  475</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__Digital.html#ga73b9b61feeaf7d790d107f2954a7fd93">digitalWrite</a>(uint8_t pin, uint8_t val);</div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160; </div>
+<div class="line"><a name="l00484"></a><span class="lineno"><a class="line" href="group__Digital.html#gab3e9bc73864eb6276f87aa94078224b6">  484</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="group__Digital.html#gab3e9bc73864eb6276f87aa94078224b6">digitalRead</a>(uint8_t pin);</div>
+<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160; </div>
+<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;<span class="keywordtype">int</span> <a class="code" href="group__Analog.html#ga2eda513a6bb35bf13675a24711d4e864">analogRead</a>(uint8_t pin);</div>
+<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160; </div>
+<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__Analog.html#ga62a628c40d93ea1823a1cdb8cae9e7be">analogWrite</a>(uint8_t pin, <span class="keywordtype">int</span> val);</div>
+<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160; </div>
+<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__Analog.html#ga529863849f86a63b517cd96cbcd47705">analogReference</a>(uint8_t mode);</div>
+<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160; </div>
+<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__Analog.html#ga0898de532d6f7e0c1a870068b6827a4d">analogReadResolution</a>(uint8_t bits);</div>
+<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160; </div>
+<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__Analog.html#ga20dc001acdcca063c7e09bd90a30c027">analogWriteResolution</a>(uint8_t bits);</div>
+<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160; </div>
+<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__Analog.html#ga219444e36258b8978770f4552619238f">analogWriteFrequency</a>(uint32_t frequency);</div>
+<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160; </div>
+<div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__Time.html#ga7cb51f5c2b5cad3766f19eb69c92793b">yield</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160; </div>
+<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__Time.html#ga6bc5f943544a887f8b23cadfb26a5e30">delay</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> ms);</div>
+<div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160; </div>
+<div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__Time.html#ga62e0a53bc261f9de8700cc5a92307e85">delayMicroseconds</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> us);</div>
+<div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160; </div>
+<div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <a class="code" href="group__Time.html#ga1871228c14c912ca1479cf826ddcb07f">millis</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160; </div>
+<div class="line"><a name="l00591"></a><span class="lineno">  591</span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <a class="code" href="group__Time.html#ga705e7f8e2a34e0e2447e933ebf56b4d4">micros</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00592"></a><span class="lineno">  592</span>&#160; </div>
+<div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <a class="code" href="group__Advanced.html#ga1ed2ad1a8590a020e15ba2b485428415">pulseIn</a>(uint8_t pin, uint8_t state, <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> timeout);</div>
+<div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160; </div>
+<div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <a class="code" href="group__Advanced.html#ga5c7c2a8ca6d056f09adb9adb1cd31516">pulseInLong</a>(uint8_t pin, uint8_t state, <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> timeout);</div>
+<div class="line"><a name="l00624"></a><span class="lineno">  624</span>&#160; </div>
+<div class="line"><a name="l00634"></a><span class="lineno">  634</span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__Advanced.html#gac44afc7b9d1ec5feb1179b2e3454690a">shiftOut</a>(uint8_t dataPin, uint8_t clockPin, uint8_t bitOrder, uint8_t val);</div>
+<div class="line"><a name="l00635"></a><span class="lineno">  635</span>&#160; </div>
+<div class="line"><a name="l00645"></a><span class="lineno">  645</span>&#160;uint8_t <a class="code" href="group__Advanced.html#ga1efecc975119046403adc60af645015d">shiftIn</a>(uint8_t dataPin, uint8_t clockPin, uint8_t bitOrder);</div>
+<div class="line"><a name="l00646"></a><span class="lineno">  646</span>&#160; </div>
+<div class="line"><a name="l00652"></a><span class="lineno">  652</span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__Interrupts.html#ga9541d9956b87e2a65ca0ffcec225c49a">interrupts</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00653"></a><span class="lineno">  653</span>&#160; </div>
+<div class="line"><a name="l00659"></a><span class="lineno">  659</span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__Interrupts.html#gab19ac43e913d173920a5a8697aab72b0">noInterrupts</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00660"></a><span class="lineno">  660</span>&#160; </div>
+<div class="line"><a name="l00668"></a><span class="lineno"><a class="line" href="group__Interrupts.html#gad6dfcb56dbcf79a409aec9a1512e2840">  668</a></span>&#160;uint8_t <a class="code" href="group__Interrupts.html#gad6dfcb56dbcf79a409aec9a1512e2840">digitalPinToInterrupt</a>(uint8_t pin);</div>
+<div class="line"><a name="l00669"></a><span class="lineno">  669</span>&#160; </div>
+<div class="line"><a name="l00678"></a><span class="lineno"><a class="line" href="group__Interrupts.html#gad0d73becebba7c663f8e9ed73efee544">  678</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__Interrupts.html#gad0d73becebba7c663f8e9ed73efee544">attachInterrupt</a>(uint8_t interruptNum, <span class="keywordtype">void</span> (*userFunc)(<span class="keywordtype">void</span>), <span class="keywordtype">int</span> mode);</div>
+<div class="line"><a name="l00679"></a><span class="lineno">  679</span>&#160; </div>
+<div class="line"><a name="l00686"></a><span class="lineno"><a class="line" href="group__Interrupts.html#gaa47ad728b5e830ac48f4085affea7d1c">  686</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__Interrupts.html#gaa47ad728b5e830ac48f4085affea7d1c">detachInterrupt</a>(uint8_t interruptNum);</div>
+<div class="line"><a name="l00687"></a><span class="lineno">  687</span>&#160; </div>
+<div class="line"><a name="l00694"></a><span class="lineno">  694</span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__Random.html#ga0f20cd490a0ba7f2d37cbb8b04d92e3e">randomSeed</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> seed);</div>
+<div class="line"><a name="l00695"></a><span class="lineno">  695</span>&#160; </div>
+<div class="line"><a name="l00707"></a><span class="lineno">  707</span>&#160;<span class="keywordtype">long</span> <a class="code" href="group__Maths.html#gaada2d75bc8a8c6eb845bd940eadfa3fd">map</a>(<span class="keywordtype">long</span> x, <span class="keywordtype">long</span> in_min, <span class="keywordtype">long</span> in_max, <span class="keywordtype">long</span> out_min, <span class="keywordtype">long</span> out_max);</div>
+<div class="line"><a name="l00708"></a><span class="lineno">  708</span>&#160; </div>
+<div class="line"><a name="l00715"></a><span class="lineno"><a class="line" href="group__System.html#ga7dfd9b79bc5a37d7df40207afbc5431f">  715</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__System.html#ga7dfd9b79bc5a37d7df40207afbc5431f">setup</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00716"></a><span class="lineno">  716</span>&#160; </div>
+<div class="line"><a name="l00723"></a><span class="lineno"><a class="line" href="group__System.html#ga0b33edabd7f1c4e4a0bf32c67269be2f">  723</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__System.html#ga0b33edabd7f1c4e4a0bf32c67269be2f">loop</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00724"></a><span class="lineno">  724</span>&#160; </div>
+<div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__System.html#ga2c97027bd05bc09accd09dcd4ada2642">initVariant</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160; </div>
+<div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160;<span class="preprocessor">#ifdef RTDUINO_USING_SPI</span></div>
+<div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;<span class="keywordtype">void</span> switchToSPI(<span class="keyword">const</span> <span class="keywordtype">char</span> *bus_name);</div>
+<div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* RTDUINO_USING_SPI */</span><span class="preprocessor"></span></div>
 <div class="line"><a name="l00742"></a><span class="lineno">  742</span>&#160; </div>
 <div class="line"><a name="l00743"></a><span class="lineno">  743</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00744"></a><span class="lineno">  744</span>&#160; </div>
-<div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160;<span class="keywordtype">long</span> random(<span class="keywordtype">long</span> <a class="code" href="group__Maths.html#gaffe776513b24d84b39af8ab0930fef7f">max</a>);</div>
-<div class="line"><a name="l00753"></a><span class="lineno">  753</span>&#160; </div>
-<div class="line"><a name="l00762"></a><span class="lineno">  762</span>&#160;<span class="keywordtype">long</span> random(<span class="keywordtype">long</span> <a class="code" href="group__Maths.html#gac6afabdc09a49a433ee19d8a9486056d">min</a>, <span class="keywordtype">long</span> <a class="code" href="group__Maths.html#gaffe776513b24d84b39af8ab0930fef7f">max</a>);</div>
-<div class="line"><a name="l00763"></a><span class="lineno">  763</span>&#160; </div>
-<div class="line"><a name="l00787"></a><span class="lineno">  787</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00788"></a><span class="lineno">  788</span>&#160;T <a class="code" href="group__Maths.html#gaada2d75bc8a8c6eb845bd940eadfa3fd">map</a>(T x, T in_min, T in_max, T out_min, T out_max)</div>
-<div class="line"><a name="l00789"></a><span class="lineno">  789</span>&#160;{</div>
-<div class="line"><a name="l00790"></a><span class="lineno">  790</span>&#160;    <span class="keywordflow">return</span> (T)(((double)(x - in_min) * (double)(out_max - out_min)) / (<span class="keywordtype">double</span>)((in_max - in_min) + out_min));</div>
-<div class="line"><a name="l00791"></a><span class="lineno">  791</span>&#160;}</div>
-<div class="line"><a name="l00792"></a><span class="lineno">  792</span>&#160; </div>
-<div class="line"><a name="l00800"></a><span class="lineno">  800</span>&#160;uint16_t makeWord(uint16_t w);</div>
-<div class="line"><a name="l00801"></a><span class="lineno">  801</span>&#160; </div>
-<div class="line"><a name="l00810"></a><span class="lineno">  810</span>&#160;uint16_t makeWord(<span class="keywordtype">byte</span> h, <span class="keywordtype">byte</span> l);</div>
-<div class="line"><a name="l00811"></a><span class="lineno">  811</span>&#160; </div>
-<div class="line"><a name="l00817"></a><span class="lineno">  817</span>&#160;<span class="preprocessor">#define word(...) makeWord(__VA_ARGS__)</span></div>
-<div class="line"><a name="l00818"></a><span class="lineno">  818</span>&#160; </div>
-<div class="line"><a name="l00828"></a><span class="lineno">  828</span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <a class="code" href="group__Advanced.html#ga1ed2ad1a8590a020e15ba2b485428415">pulseIn</a>(uint8_t pin, uint8_t state, <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> timeout = 1000000L);</div>
-<div class="line"><a name="l00829"></a><span class="lineno">  829</span>&#160; </div>
-<div class="line"><a name="l00839"></a><span class="lineno">  839</span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <a class="code" href="group__Advanced.html#ga5c7c2a8ca6d056f09adb9adb1cd31516">pulseInLong</a>(uint8_t pin, uint8_t state, <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> timeout = 1000000L);</div>
-<div class="line"><a name="l00840"></a><span class="lineno">  840</span>&#160; </div>
-<div class="line"><a name="l00849"></a><span class="lineno">  849</span>&#160;<span class="keywordtype">void</span> tone(uint8_t pin, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> frequency, <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> duration = 0);</div>
-<div class="line"><a name="l00850"></a><span class="lineno">  850</span>&#160; </div>
-<div class="line"><a name="l00857"></a><span class="lineno">  857</span>&#160;<span class="keywordtype">void</span> noTone(uint8_t pin);</div>
-<div class="line"><a name="l00858"></a><span class="lineno">  858</span>&#160; </div>
-<div class="line"><a name="l00859"></a><span class="lineno">  859</span>&#160;<span class="preprocessor">#include &quot;WCharacter.h&quot;</span></div>
-<div class="line"><a name="l00860"></a><span class="lineno">  860</span>&#160;<span class="preprocessor">#include &quot;WString.h&quot;</span></div>
-<div class="line"><a name="l00861"></a><span class="lineno">  861</span>&#160;<span class="preprocessor">#include &quot;HardwareSerial.h&quot;</span></div>
-<div class="line"><a name="l00862"></a><span class="lineno">  862</span>&#160;<span class="preprocessor">#ifdef RTDUINO_USING_USBSERIAL</span></div>
-<div class="line"><a name="l00863"></a><span class="lineno">  863</span>&#160;<span class="preprocessor">#include &quot;USBSerial.h&quot;</span></div>
-<div class="line"><a name="l00864"></a><span class="lineno">  864</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* RTDUINO_USING_USBSERIAL */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00865"></a><span class="lineno">  865</span>&#160; </div>
-<div class="line"><a name="l00866"></a><span class="lineno">  866</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __cplusplus */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00867"></a><span class="lineno">  867</span>&#160; </div>
-<div class="line"><a name="l00868"></a><span class="lineno">  868</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __ARDUINO_CORE_H__ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00744"></a><span class="lineno">  744</span>&#160;} <span class="comment">/* extern &quot;C&quot; { */</span></div>
+<div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00746"></a><span class="lineno">  746</span>&#160; </div>
+<div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160; </div>
+<div class="line"><a name="l00756"></a><span class="lineno">  756</span>&#160;<span class="keywordtype">long</span> random(<span class="keywordtype">long</span> <a class="code" href="group__Maths.html#gaffe776513b24d84b39af8ab0930fef7f">max</a>);</div>
+<div class="line"><a name="l00757"></a><span class="lineno">  757</span>&#160; </div>
+<div class="line"><a name="l00766"></a><span class="lineno">  766</span>&#160;<span class="keywordtype">long</span> random(<span class="keywordtype">long</span> <a class="code" href="group__Maths.html#gac6afabdc09a49a433ee19d8a9486056d">min</a>, <span class="keywordtype">long</span> <a class="code" href="group__Maths.html#gaffe776513b24d84b39af8ab0930fef7f">max</a>);</div>
+<div class="line"><a name="l00767"></a><span class="lineno">  767</span>&#160; </div>
+<div class="line"><a name="l00791"></a><span class="lineno">  791</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00792"></a><span class="lineno">  792</span>&#160;T <a class="code" href="group__Maths.html#gaada2d75bc8a8c6eb845bd940eadfa3fd">map</a>(T x, T in_min, T in_max, T out_min, T out_max)</div>
+<div class="line"><a name="l00793"></a><span class="lineno">  793</span>&#160;{</div>
+<div class="line"><a name="l00794"></a><span class="lineno">  794</span>&#160;    <span class="keywordflow">return</span> (T)(((double)(x - in_min) * (double)(out_max - out_min)) / (<span class="keywordtype">double</span>)((in_max - in_min) + out_min));</div>
+<div class="line"><a name="l00795"></a><span class="lineno">  795</span>&#160;}</div>
+<div class="line"><a name="l00796"></a><span class="lineno">  796</span>&#160; </div>
+<div class="line"><a name="l00804"></a><span class="lineno">  804</span>&#160;uint16_t makeWord(uint16_t w);</div>
+<div class="line"><a name="l00805"></a><span class="lineno">  805</span>&#160; </div>
+<div class="line"><a name="l00814"></a><span class="lineno">  814</span>&#160;uint16_t makeWord(<span class="keywordtype">byte</span> h, <span class="keywordtype">byte</span> l);</div>
+<div class="line"><a name="l00815"></a><span class="lineno">  815</span>&#160; </div>
+<div class="line"><a name="l00821"></a><span class="lineno">  821</span>&#160;<span class="preprocessor">#define word(...) makeWord(__VA_ARGS__)</span></div>
+<div class="line"><a name="l00822"></a><span class="lineno">  822</span>&#160; </div>
+<div class="line"><a name="l00832"></a><span class="lineno">  832</span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <a class="code" href="group__Advanced.html#ga1ed2ad1a8590a020e15ba2b485428415">pulseIn</a>(uint8_t pin, uint8_t state, <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> timeout = 1000000L);</div>
+<div class="line"><a name="l00833"></a><span class="lineno">  833</span>&#160; </div>
+<div class="line"><a name="l00843"></a><span class="lineno">  843</span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <a class="code" href="group__Advanced.html#ga5c7c2a8ca6d056f09adb9adb1cd31516">pulseInLong</a>(uint8_t pin, uint8_t state, <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> timeout = 1000000L);</div>
+<div class="line"><a name="l00844"></a><span class="lineno">  844</span>&#160; </div>
+<div class="line"><a name="l00853"></a><span class="lineno">  853</span>&#160;<span class="keywordtype">void</span> tone(uint8_t pin, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> frequency, <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> duration = 0);</div>
+<div class="line"><a name="l00854"></a><span class="lineno">  854</span>&#160; </div>
+<div class="line"><a name="l00861"></a><span class="lineno">  861</span>&#160;<span class="keywordtype">void</span> noTone(uint8_t pin);</div>
+<div class="line"><a name="l00862"></a><span class="lineno">  862</span>&#160; </div>
+<div class="line"><a name="l00863"></a><span class="lineno">  863</span>&#160;<span class="preprocessor">#include &quot;WCharacter.h&quot;</span></div>
+<div class="line"><a name="l00864"></a><span class="lineno">  864</span>&#160;<span class="preprocessor">#include &quot;WString.h&quot;</span></div>
+<div class="line"><a name="l00865"></a><span class="lineno">  865</span>&#160;<span class="preprocessor">#include &quot;HardwareSerial.h&quot;</span></div>
+<div class="line"><a name="l00866"></a><span class="lineno">  866</span>&#160;<span class="preprocessor">#ifdef RTDUINO_USING_USBSERIAL</span></div>
+<div class="line"><a name="l00867"></a><span class="lineno">  867</span>&#160;<span class="preprocessor">#include &quot;USBSerial.h&quot;</span></div>
+<div class="line"><a name="l00868"></a><span class="lineno">  868</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* RTDUINO_USING_USBSERIAL */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00869"></a><span class="lineno">  869</span>&#160; </div>
+<div class="line"><a name="l00870"></a><span class="lineno">  870</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __cplusplus */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00871"></a><span class="lineno">  871</span>&#160; </div>
+<div class="line"><a name="l00872"></a><span class="lineno">  872</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __ARDUINO_CORE_H__ */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="agroup__Advanced_html_ga1ed2ad1a8590a020e15ba2b485428415"><div class="ttname"><a href="group__Advanced.html#ga1ed2ad1a8590a020e15ba2b485428415">pulseIn</a></div><div class="ttdeci">unsigned long pulseIn(uint8_t pin, uint8_t state, unsigned long timeout)</div><div class="ttdoc">Measures the duration of a pulse (in us) on the specified pin.</div><div class="ttdef"><b>Definition:</b> wiring_pulse.c:59</div></div>
 <div class="ttc" id="agroup__Advanced_html_ga1efecc975119046403adc60af645015d"><div class="ttname"><a href="group__Advanced.html#ga1efecc975119046403adc60af645015d">shiftIn</a></div><div class="ttdeci">uint8_t shiftIn(uint8_t dataPin, uint8_t clockPin, uint8_t bitOrder)</div><div class="ttdoc">Shifts in data on a specified data pin using a specified clock pin and bit order.</div><div class="ttdef"><b>Definition:</b> wiring_shift.c:37</div></div>
 <div class="ttc" id="agroup__Advanced_html_ga5c7c2a8ca6d056f09adb9adb1cd31516"><div class="ttname"><a href="group__Advanced.html#ga5c7c2a8ca6d056f09adb9adb1cd31516">pulseInLong</a></div><div class="ttdeci">unsigned long pulseInLong(uint8_t pin, uint8_t state, unsigned long timeout)</div><div class="ttdoc">Measures the duration of a pulse (in us) on the specified pin.</div><div class="ttdef"><b>Definition:</b> wiring_pulse.c:108</div></div>
@@ -324,9 +328,9 @@ $(function() {
 <div class="ttc" id="agroup__Analog_html_ga2eda513a6bb35bf13675a24711d4e864"><div class="ttname"><a href="group__Analog.html#ga2eda513a6bb35bf13675a24711d4e864">analogRead</a></div><div class="ttdeci">int analogRead(uint8_t pin)</div><div class="ttdoc">Reads the analog input on a specified analog pin.</div><div class="ttdef"><b>Definition:</b> wiring_analog.c:144</div></div>
 <div class="ttc" id="agroup__Analog_html_ga529863849f86a63b517cd96cbcd47705"><div class="ttname"><a href="group__Analog.html#ga529863849f86a63b517cd96cbcd47705">analogReference</a></div><div class="ttdeci">void analogReference(uint8_t mode)</div><div class="ttdoc">Configures the reference voltage used for analog input (e.g., external, internal, etc....</div><div class="ttdef"><b>Definition:</b> wiring_analog.c:35</div></div>
 <div class="ttc" id="agroup__Analog_html_ga62a628c40d93ea1823a1cdb8cae9e7be"><div class="ttname"><a href="group__Analog.html#ga62a628c40d93ea1823a1cdb8cae9e7be">analogWrite</a></div><div class="ttdeci">void analogWrite(uint8_t pin, int val)</div><div class="ttdoc">Writes an analog value (PWM wave) to a pin.</div><div class="ttdef"><b>Definition:</b> wiring_analog.c:83</div></div>
-<div class="ttc" id="agroup__Bits_html_ga69584ba90b098f23df3702374e594862"><div class="ttname"><a href="group__Bits.html#ga69584ba90b098f23df3702374e594862">word</a></div><div class="ttdeci">unsigned int word</div><div class="ttdoc">Represents a 16-bit unsigned integer.</div><div class="ttdef"><b>Definition:</b> Arduino.h:147</div></div>
-<div class="ttc" id="agroup__Bits_html_ga7c6368b321bd9acd0149b030bb8275ed"><div class="ttname"><a href="group__Bits.html#ga7c6368b321bd9acd0149b030bb8275ed">boolean</a></div><div class="ttdeci">bool boolean</div><div class="ttdoc">Represents a boolean value (true or false).</div><div class="ttdef"><b>Definition:</b> Arduino.h:154</div></div>
-<div class="ttc" id="agroup__Bits_html_ga82b52bf2b45e214a8f2100ebfdf1aee4"><div class="ttname"><a href="group__Bits.html#ga82b52bf2b45e214a8f2100ebfdf1aee4">byte</a></div><div class="ttdeci">uint8_t byte</div><div class="ttdoc">Represents an 8-bit unsigned integer.</div><div class="ttdef"><b>Definition:</b> Arduino.h:161</div></div>
+<div class="ttc" id="agroup__Bits_html_ga69584ba90b098f23df3702374e594862"><div class="ttname"><a href="group__Bits.html#ga69584ba90b098f23df3702374e594862">word</a></div><div class="ttdeci">unsigned int word</div><div class="ttdoc">Represents a 16-bit unsigned integer.</div><div class="ttdef"><b>Definition:</b> Arduino.h:151</div></div>
+<div class="ttc" id="agroup__Bits_html_ga7c6368b321bd9acd0149b030bb8275ed"><div class="ttname"><a href="group__Bits.html#ga7c6368b321bd9acd0149b030bb8275ed">boolean</a></div><div class="ttdeci">bool boolean</div><div class="ttdoc">Represents a boolean value (true or false).</div><div class="ttdef"><b>Definition:</b> Arduino.h:158</div></div>
+<div class="ttc" id="agroup__Bits_html_ga82b52bf2b45e214a8f2100ebfdf1aee4"><div class="ttname"><a href="group__Bits.html#ga82b52bf2b45e214a8f2100ebfdf1aee4">byte</a></div><div class="ttdeci">uint8_t byte</div><div class="ttdoc">Represents an 8-bit unsigned integer.</div><div class="ttdef"><b>Definition:</b> Arduino.h:165</div></div>
 <div class="ttc" id="agroup__Digital_html_ga73b9b61feeaf7d790d107f2954a7fd93"><div class="ttname"><a href="group__Digital.html#ga73b9b61feeaf7d790d107f2954a7fd93">digitalWrite</a></div><div class="ttdeci">void digitalWrite(uint8_t pin, uint8_t val)</div><div class="ttdoc">Writes a HIGH or a LOW value to a digital pin.</div></div>
 <div class="ttc" id="agroup__Digital_html_gab3e9bc73864eb6276f87aa94078224b6"><div class="ttname"><a href="group__Digital.html#gab3e9bc73864eb6276f87aa94078224b6">digitalRead</a></div><div class="ttdeci">int digitalRead(uint8_t pin)</div><div class="ttdoc">Reads the value from a specified digital pin, either HIGH or LOW.</div></div>
 <div class="ttc" id="agroup__Digital_html_gabf453c1659ee9fafa5af689523ac71e7"><div class="ttname"><a href="group__Digital.html#gabf453c1659ee9fafa5af689523ac71e7">pinMode</a></div><div class="ttdeci">void pinMode(uint8_t pin, uint8_t mode)</div><div class="ttdoc">Configures the specified pin to behave either as an input or an output.</div></div>
@@ -336,8 +340,8 @@ $(function() {
 <div class="ttc" id="agroup__Interrupts_html_gad0d73becebba7c663f8e9ed73efee544"><div class="ttname"><a href="group__Interrupts.html#gad0d73becebba7c663f8e9ed73efee544">attachInterrupt</a></div><div class="ttdeci">void attachInterrupt(uint8_t interruptNum, void(*userFunc)(void), int mode)</div><div class="ttdoc">Attaches an interrupt service routine to a specified interrupt.</div></div>
 <div class="ttc" id="agroup__Interrupts_html_gad6dfcb56dbcf79a409aec9a1512e2840"><div class="ttname"><a href="group__Interrupts.html#gad6dfcb56dbcf79a409aec9a1512e2840">digitalPinToInterrupt</a></div><div class="ttdeci">uint8_t digitalPinToInterrupt(uint8_t pin)</div><div class="ttdoc">Converts a digital pin number to the corresponding interrupt number.</div></div>
 <div class="ttc" id="agroup__Maths_html_gaada2d75bc8a8c6eb845bd940eadfa3fd"><div class="ttname"><a href="group__Maths.html#gaada2d75bc8a8c6eb845bd940eadfa3fd">map</a></div><div class="ttdeci">long map(long x, long in_min, long in_max, long out_min, long out_max)</div><div class="ttdoc">Maps a value from one range to another.</div><div class="ttdef"><b>Definition:</b> WMath_c.c:44</div></div>
-<div class="ttc" id="agroup__Maths_html_gac6afabdc09a49a433ee19d8a9486056d"><div class="ttname"><a href="group__Maths.html#gac6afabdc09a49a433ee19d8a9486056d">min</a></div><div class="ttdeci">#define min(a, b)</div><div class="ttdoc">Returns the smaller of two values.</div><div class="ttdef"><b>Definition:</b> Arduino.h:295</div></div>
-<div class="ttc" id="agroup__Maths_html_gaffe776513b24d84b39af8ab0930fef7f"><div class="ttname"><a href="group__Maths.html#gaffe776513b24d84b39af8ab0930fef7f">max</a></div><div class="ttdeci">#define max(a, b)</div><div class="ttdoc">Returns the larger of two values.</div><div class="ttdef"><b>Definition:</b> Arduino.h:304</div></div>
+<div class="ttc" id="agroup__Maths_html_gac6afabdc09a49a433ee19d8a9486056d"><div class="ttname"><a href="group__Maths.html#gac6afabdc09a49a433ee19d8a9486056d">min</a></div><div class="ttdeci">#define min(a, b)</div><div class="ttdoc">Returns the smaller of two values.</div><div class="ttdef"><b>Definition:</b> Arduino.h:299</div></div>
+<div class="ttc" id="agroup__Maths_html_gaffe776513b24d84b39af8ab0930fef7f"><div class="ttname"><a href="group__Maths.html#gaffe776513b24d84b39af8ab0930fef7f">max</a></div><div class="ttdeci">#define max(a, b)</div><div class="ttdoc">Returns the larger of two values.</div><div class="ttdef"><b>Definition:</b> Arduino.h:308</div></div>
 <div class="ttc" id="agroup__Random_html_ga0f20cd490a0ba7f2d37cbb8b04d92e3e"><div class="ttname"><a href="group__Random.html#ga0f20cd490a0ba7f2d37cbb8b04d92e3e">randomSeed</a></div><div class="ttdeci">void randomSeed(unsigned long seed)</div><div class="ttdoc">Initializes the pseudo-random number generator.</div><div class="ttdef"><b>Definition:</b> WMath_c.c:36</div></div>
 <div class="ttc" id="agroup__System_html_ga0b33edabd7f1c4e4a0bf32c67269be2f"><div class="ttname"><a href="group__System.html#ga0b33edabd7f1c4e4a0bf32c67269be2f">loop</a></div><div class="ttdeci">void loop(void)</div><div class="ttdoc">Main loop function for the Arduino program.</div></div>
 <div class="ttc" id="agroup__System_html_ga2c97027bd05bc09accd09dcd4ada2642"><div class="ttname"><a href="group__System.html#ga2c97027bd05bc09accd09dcd4ada2642">initVariant</a></div><div class="ttdeci">void initVariant(void)</div><div class="ttdoc">Variant-specific initialization function.</div><div class="ttdef"><b>Definition:</b> RTduino.cpp:142</div></div>
@@ -347,11 +351,11 @@ $(function() {
 <div class="ttc" id="agroup__Time_html_ga6bc5f943544a887f8b23cadfb26a5e30"><div class="ttname"><a href="group__Time.html#ga6bc5f943544a887f8b23cadfb26a5e30">delay</a></div><div class="ttdeci">void delay(unsigned long ms)</div><div class="ttdoc">Delays the program for the specified number of milliseconds.</div><div class="ttdef"><b>Definition:</b> wiring.c:59</div></div>
 <div class="ttc" id="agroup__Time_html_ga705e7f8e2a34e0e2447e933ebf56b4d4"><div class="ttname"><a href="group__Time.html#ga705e7f8e2a34e0e2447e933ebf56b4d4">micros</a></div><div class="ttdeci">unsigned long micros(void)</div><div class="ttdoc">Returns the number of microseconds since the Arduino board began running the current program.</div><div class="ttdef"><b>Definition:</b> wiring.c:30</div></div>
 <div class="ttc" id="agroup__Time_html_ga7cb51f5c2b5cad3766f19eb69c92793b"><div class="ttname"><a href="group__Time.html#ga7cb51f5c2b5cad3766f19eb69c92793b">yield</a></div><div class="ttdeci">void yield(void)</div><div class="ttdoc">Pauses the execution of the current task, allowing other tasks to run.</div><div class="ttdef"><b>Definition:</b> wiring.c:69</div></div>
-<div class="ttc" id="astructpin__map__t_html"><div class="ttname"><a href="structpin__map__t.html">pin_map_t</a></div><div class="ttdoc">RTduino pin map structure.</div><div class="ttdef"><b>Definition:</b> Arduino.h:135</div></div>
-<div class="ttc" id="astructpin__map__t_html_a7eb2290f45ff638c0bca0c3584f006c6"><div class="ttname"><a href="structpin__map__t.html#a7eb2290f45ff638c0bca0c3584f006c6">pin_map_t::arduino_pin</a></div><div class="ttdeci">uint8_t arduino_pin</div><div class="ttdef"><b>Definition:</b> Arduino.h:136</div></div>
-<div class="ttc" id="astructpin__map__t_html_a82b2500afecaaac6c4cf8eee8fc19f87"><div class="ttname"><a href="structpin__map__t.html#a82b2500afecaaac6c4cf8eee8fc19f87">pin_map_t::rt_pin</a></div><div class="ttdeci">rt_base_t rt_pin</div><div class="ttdef"><b>Definition:</b> Arduino.h:137</div></div>
-<div class="ttc" id="astructpin__map__t_html_aa4f21c5e0aacaf4d3a96bf284f1e25da"><div class="ttname"><a href="structpin__map__t.html#aa4f21c5e0aacaf4d3a96bf284f1e25da">pin_map_t::device_name</a></div><div class="ttdeci">const char * device_name</div><div class="ttdef"><b>Definition:</b> Arduino.h:138</div></div>
-<div class="ttc" id="astructpin__map__t_html_ae845205410071a42448833bd5a9ca7aa"><div class="ttname"><a href="structpin__map__t.html#ae845205410071a42448833bd5a9ca7aa">pin_map_t::channel</a></div><div class="ttdeci">rt_int8_t channel</div><div class="ttdef"><b>Definition:</b> Arduino.h:139</div></div>
+<div class="ttc" id="astructpin__map__t_html"><div class="ttname"><a href="structpin__map__t.html">pin_map_t</a></div><div class="ttdoc">RTduino pin map structure.</div><div class="ttdef"><b>Definition:</b> Arduino.h:139</div></div>
+<div class="ttc" id="astructpin__map__t_html_a7eb2290f45ff638c0bca0c3584f006c6"><div class="ttname"><a href="structpin__map__t.html#a7eb2290f45ff638c0bca0c3584f006c6">pin_map_t::arduino_pin</a></div><div class="ttdeci">uint8_t arduino_pin</div><div class="ttdef"><b>Definition:</b> Arduino.h:140</div></div>
+<div class="ttc" id="astructpin__map__t_html_a82b2500afecaaac6c4cf8eee8fc19f87"><div class="ttname"><a href="structpin__map__t.html#a82b2500afecaaac6c4cf8eee8fc19f87">pin_map_t::rt_pin</a></div><div class="ttdeci">rt_base_t rt_pin</div><div class="ttdef"><b>Definition:</b> Arduino.h:141</div></div>
+<div class="ttc" id="astructpin__map__t_html_aa4f21c5e0aacaf4d3a96bf284f1e25da"><div class="ttname"><a href="structpin__map__t.html#aa4f21c5e0aacaf4d3a96bf284f1e25da">pin_map_t::device_name</a></div><div class="ttdeci">const char * device_name</div><div class="ttdef"><b>Definition:</b> Arduino.h:142</div></div>
+<div class="ttc" id="astructpin__map__t_html_ae845205410071a42448833bd5a9ca7aa"><div class="ttname"><a href="structpin__map__t.html#ae845205410071a42448833bd5a9ca7aa">pin_map_t::channel</a></div><div class="ttdeci">rt_int8_t channel</div><div class="ttdef"><b>Definition:</b> Arduino.h:143</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
